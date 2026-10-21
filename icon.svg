@@ -1,1 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="112" fill="#102b40"/><rect x="40" y="40" width="432" height="432" rx="90" fill="none" stroke="#58e4d5" stroke-width="12"/><text x="256" y="283" font-family="Arial" font-size="114" font-weight="bold" fill="#fff" text-anchor="middle">BTU</text><text x="256" y="345" font-family="Arial" font-size="35" fill="#58e4d5" text-anchor="middle">STUDIO</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="BTU Studio - cámara térmica">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#323334"/><stop offset="1" stop-color="#151617"/></linearGradient><linearGradient id="metal" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f2f1ed"/><stop offset=".58" stop-color="#c4c5c3"/><stop offset="1" stop-color="#898c8c"/></linearGradient></defs>
+<rect width="512" height="512" rx="110" fill="url(#bg)"/>
+<rect x="14" y="14" width="484" height="484" rx="98" fill="none" stroke="#4b4d4e" stroke-width="3"/>
+<!-- cold room isometric outline -->
+<path d="M101 294V157L254 70 409 157v139" fill="none" stroke="url(#metal)" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M136 285V181L254 113l119 68v104" fill="none" stroke="#969a99" stroke-width="9" stroke-linejoin="round"/>
+<path d="M254 113v52M101 157l35 24M409 157l-36 24" stroke="#e4e5e1" stroke-width="9" stroke-linecap="round"/>
+<!-- snowflake -->
+<g stroke="#eff0ed" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+<path d="M254 174v118M203 203l102 60M203 263l102-60"/>
+<path d="M236 192l18 18 18-18M236 274l18-18 18 18"/>
+<path d="M202 228l25 2-8-24M306 238l-25-2 8 24"/>
+<path d="M218 260l9-24-25 2M290 206l-9 24 25-2"/>
+</g>
+<!-- floor / thermal wave -->
+<path d="M79 319q85-21 173 0t180 0" stroke="#d5b67b" stroke-width="9" fill="none" stroke-linecap="round"/>
+<path d="M110 352h292" stroke="#626462" stroke-width="3"/>
+<text x="256" y="421" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="88" letter-spacing="3" text-anchor="middle" fill="#f3f1eb">BTU</text>
+<text x="256" y="461" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="24" letter-spacing="12" text-anchor="middle" fill="#c5c5c1">STUDIO</text>
+</svg>
