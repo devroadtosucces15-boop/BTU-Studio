@@ -26,3 +26,5 @@
 @media(max-width:520px){#btu-feedback-bar{top:auto;bottom:calc(12px + env(safe-area-inset-bottom));}#btu-feedback-panel{top:calc(10px + env(safe-area-inset-top));bottom:auto;max-height:calc(100dvh - 95px)}#btu-feedback-launch{font-size:13px;padding:11px 13px}}
 @media(prefers-reduced-motion:reduce){#btu-feedback-panel,#btu-feedback-bar{transition:none}}
 @media print{#btu-feedback-launch,#btu-feedback-mask,#btu-feedback-panel{display:none!important}}
+
+#btu-feedback-bar,#btu-feedback-panel{pointer-events:auto}
