@@ -1,60 +1,421 @@
-<!doctype html><html lang="es-MX"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#081525"><meta name="description" content="Laboratorio educativo de estimación térmica con trazabilidad y proyectos privados"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="BTU Studio"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/svg+xml" href="./icon.svg"><link rel="apple-touch-icon" href="./icon.svg"><title>BTU Studio | Laboratorio térmico</title><style>
-:root{font-family:system-ui,-apple-system,sans-serif;color-scheme:dark;--bg:#081525;--card:#10283a;--line:#345368;--text:#f0faff;--muted:#bbcfdb;--accent:#66e8d2;--focus:#ffe082}*{box-sizing:border-box}html{scroll-behavior:smooth}body{background:radial-gradient(ellipse at 90% 0%,#174960,var(--bg) 57%);color:var(--text);margin:0}main{max-width:1180px;margin:auto;padding:clamp(14px,3vw,32px)}h1{font-size:clamp(2.5rem,6vw,4.2rem);letter-spacing:-.06em;margin:0}h1 span{color:var(--accent)}h2{font-size:1.3rem;letter-spacing:-.02em;margin:0 0 12px}h3{font-size:1rem}p,small{color:var(--muted);line-height:1.55}.eyebrow{text-transform:uppercase;letter-spacing:.15em;color:var(--accent);font-weight:700;font-size:.73rem}.hero{display:flex;gap:20px;justify-content:space-between;align-items:center;flex-wrap:wrap}.chip{background:#173e4d;border:1px solid #366777;border-radius:50px;padding:9px 14px;font-size:.85rem}.card{background:linear-gradient(140deg,#153248,#0e2233);border:1px solid var(--line);border-radius:18px;padding:clamp(16px,3vw,24px);margin:14px 0;box-shadow:0 14px 36px #0002}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.field label{display:block;color:#d1e2ea;font-size:.88rem;margin:0 0 6px}input,select,textarea,button{font:inherit;border-radius:10px;min-height:44px}input,select,textarea{width:100%;background:#091a2b;border:1px solid #57758b;color:var(--text);padding:10px 12px}input[type=checkbox]{width:19px;min-height:19px;accent-color:var(--accent)}textarea{min-height:75px}button{background:#19384b;border:1px solid #557084;color:#f4fdff;padding:10px 14px;cursor:pointer}button:hover{border-color:var(--accent)}button[aria-current=step],button.primary{background:var(--accent);color:#06202c;font-weight:700}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--focus);outline-offset:3px}.toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.toolbar label{display:flex;gap:7px;align-items:center}.nav{display:flex;gap:7px;overflow-x:auto;padding:10px 0;position:sticky;top:0;z-index:30;background:#081525f5}.nav button{white-space:nowrap}.progress{position:sticky;top:67px;z-index:29;padding:12px;background:#10283bf8;border:1px solid var(--line);border-radius:13px}.progressbar{height:9px;background:#345066;border-radius:12px;overflow:hidden;margin:8px 0}.progressbar div{height:100%;background:linear-gradient(90deg,#40bfe9,#73e6aa);width:0;transition:width .2s}.steps{display:flex;gap:6px;overflow-x:auto}.steps button{white-space:nowrap;font-size:.78rem;min-height:36px;padding:7px 10px}.steps .done{border-color:#7ce5bb;color:#a2efd0}.muted{color:var(--muted)}.result{font-size:clamp(2.5rem,7vw,4.2rem);font-weight:800;color:var(--accent);line-height:1.1}.metric{background:#0b1e2e;border:1px solid #34566c;border-radius:12px;padding:14px}.metric strong{display:block;font-size:1.35rem;color:var(--accent);overflow-wrap:anywhere}.line{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}.bars{height:170px;display:flex;gap:16px;align-items:end;border-bottom:1px solid #658398;margin:16px 0 7px}.bar{flex:1;height:100%;display:flex;flex-direction:column;justify-content:end;text-align:center;gap:5px}.bar i{display:block;background:linear-gradient(#69e9d6,#2782a0);min-height:3px;border-radius:7px 7px 0 0}.bar:nth-child(2) i{background:linear-gradient(#ffc783,#a76e3e)}.bar:nth-child(3) i{background:linear-gradient(#b4caff,#5774b5)}.bar small{font-size:.74rem}.warning{border-left:3px solid #ffce85;padding:9px 12px;background:#483c272a}.info{border-left:3px solid var(--accent);padding:9px 12px;background:#174e4d30}.hide{display:none!important}details{border-top:1px solid var(--line);padding:12px 0}summary{cursor:pointer;font-weight:700}.contrast{--bg:#000;--card:#000;--line:#fff;--accent:#00ffff;--muted:#fff}.contrast .card{background:#000}.large{font-size:19px}.reduced *, .reduced *::before,.reduced *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}@media(max-width:660px){.grid,.grid3{grid-template-columns:1fr}.progress{top:67px}.hero{align-items:flex-start}}@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}@media print{body{background:#fff;color:#000}.nav,.progress,.toolbar,button{display:none!important}.card{background:#fff;color:#000;box-shadow:none;border-color:#777}.hide{display:block!important}p,small{color:#333}}
-</style></head><body><main><header class="hero"><div><div class="eyebrow">Laboratorio de ingeniería térmica · edición móvil</div><h1>BTU <span>STUDIO</span></h1><p>Evaluación guiada, parámetros auditables y resultados explicados paso a paso.</p></div><div class="chip">❄️ Enfriamiento · 🔥 Calefacción</div></header>
-<div class="card"><div class="toolbar" role="group" aria-label="Preferencias de accesibilidad"><label><input id="contrast" type="checkbox"> Alto contraste</label><label><input id="large" type="checkbox"> Texto grande</label><label><input id="reduced" type="checkbox"> Reducir movimiento</label><button id="save" type="button">💾 Guardar</button><button id="export" type="button">⬇ Exportar</button><button id="import" type="button">⬆ Importar</button><input id="importFile" type="file" accept=".json,application/json" hidden><button id="print" type="button">🖨 Imprimir</button></div><small id="status" role="status" aria-live="polite">🔒 Datos privados en este navegador</small></div>
-<nav class="nav" aria-label="Secciones principales"><button data-tab="assessment" aria-current="step">🏠 Evaluación</button><button data-tab="engineering">🧮 Ingeniería</button><button data-tab="guide">📚 Asistente 8 pasos</button><button data-tab="results">📊 Resultados</button><button data-tab="projects">💾 Proyectos</button></nav>
-<div class="progress"><div class="line" style="padding:0;border:0"><b>🧭 Progreso de evaluación</b><output id="progressText">0%</output></div><div id="progressTrack" class="progressbar" role="progressbar" aria-label="Campos esenciales completados" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="progressFill"></div></div><div class="steps" id="steps"></div></div>
-<section id="assessment"><div class="card"><h2>01 · Proyecto y condiciones</h2><div class="grid" id="contextFields"></div></div><div class="card"><h2>02 · Dimensiones y ocupación</h2><p>El área se calcula automáticamente a partir del largo y ancho. También puedes ingresar el área directamente.</p><div class="grid" id="geometryFields"></div><p id="areaHint" class="info">Ingresa dimensiones o área.</p></div><div class="card"><h2>03 · Entorno y cargas</h2><div class="grid" id="envelopeFields"></div></div><div class="card"><h2>Vista preliminar</h2><div class="result" id="preview">—</div><small>BTU/h · estimación simplificada, no dimensionamiento definitivo</small><p class="warning">La selección de temporada no aplica automáticamente un factor inventado. Usa temperaturas de diseño y propiedades físicas verificadas para el cálculo de ingeniería.</p><button class="primary" data-goto="results">Ver resultados y gráficas →</button></div></section>
-<section id="engineering" class="hide"><div class="card"><h2>04 · Datos físicos y temperaturas</h2><p>Introduce condiciones de diseño para tu temporada. La diferencia de temperatura se calcula automáticamente. Las propiedades no especificadas se mantienen como desconocidas, no como valores inventados.</p><div class="grid" id="physicalFields"></div><div class="metric"><small>Diferencia absoluta de temperatura</small><strong id="delta">—</strong></div></div><div class="card"><h2>05 · Factores y supuestos editables</h2><p>El método simplificado original conserva sus reglas. Puedes editar los coeficientes y registrar cada cambio en el proyecto.</p><div class="grid" id="factorFields"></div></div><div class="card"><h2>06 · Métodos de cálculo</h2><div class="grid" id="methodFields"></div><p class="info">La estimación simplificada y el cálculo físico se presentan por separado. El cálculo físico es parcial cuando faltan datos de la envolvente o ventilación. No se reemplaza un Manual J completo.</p></div></section>
-<section id="guide" class="hide"><div class="card"><h2>📚 Asistente original de ocho pasos</h2><div id="lesson" aria-live="polite"></div><div class="toolbar"><button id="previous">← Anterior</button><button id="next" class="primary">Siguiente →</button></div></div></section>
-<section id="results" class="hide"><div class="card"><h2>📊 Resumen térmico</h2><div class="result" id="btu">—</div><small>BTU/h · resultado de referencia simplificado</small><div class="grid3" style="margin-top:16px"><div class="metric"><small>Toneladas de refrigeración</small><strong id="tons">—</strong></div><div class="metric"><small>Potencia térmica</small><strong id="kw">—</strong></div><div class="metric"><small>Capacidad nominal siguiente</small><strong id="nominal">—</strong></div></div><div class="bars" role="img" aria-label="Comparación de carga base, carga ajustada y capacidad nominal"><div class="bar"><small>Base</small><i id="barBase"></i></div><div class="bar"><small>Ajustada</small><i id="barAdjusted"></i></div><div class="bar"><small>Nominal</small><i id="barNominal"></i></div></div><small>Escala relativa en BTU/h; no representa consumo eléctrico.</small></div><div class="card"><h2>🔍 Desglose del cálculo</h2><div id="trace" aria-live="polite"></div><details open><summary>Alcance y precisión</summary><p>Esta calculadora es educativa. Los factores predeterminados son heurísticos. Para seleccionar equipos reales se necesita un procedimiento profesional con datos climáticos, humedad, orientación, materiales, ventilación e infiltración.</p></details></div><div class="card"><h2>🏗 Balance térmico físico (parcial)</h2><div id="physics"></div><p class="warning">Un resultado parcial NO equivale a la carga total de la habitación. Solo se muestran componentes con entradas físicas suficientes.</p></div></section>
-<section id="projects" class="hide"><div class="card"><h2>📁 Mis proyectos en este teléfono</h2><p>Los proyectos se guardan en el almacenamiento del sitio de Safari. No existe cuenta ni servidor de datos: GitHub Pages únicamente entrega los archivos de la aplicación. Puedes guardar varios proyectos y exportarlos a JSON para respaldo o traslado.</p><div class="grid"><div class="field"><label for="projectName">Nombre del proyecto</label><input id="projectName" placeholder="Ej. Recámara principal"></div><div class="field"><label for="projectSelect">Proyecto guardado</label><select id="projectSelect"></select></div></div><div class="toolbar" style="margin-top:14px"><button id="saveNamed" class="primary">Guardar proyecto</button><button id="openNamed">Abrir seleccionado</button><button id="deleteNamed">Eliminar seleccionado</button><button id="newProject">Nuevo proyecto</button></div><p id="projectCount" class="info"></p></div><div class="card"><h2>🔐 Privacidad y cuentas</h2><p><strong>Modo local:</strong> funciona sin registro, sin suscripción y sin enviar tus evaluaciones a la nube. Puedes exportar e importar archivos en el teléfono.</p><p><strong>Cuentas y sincronización:</strong> no están habilitadas. Requieren un servicio de autenticación, almacenamiento privado y reglas de acceso; no sería correcto simular un inicio de sesión que no protege datos.</p><p><strong>Importante:</strong> borrar datos del sitio, usar navegación privada o cambiar de dispositivo puede eliminar los proyectos locales si no tienes una copia exportada.</p></div></section>
-<footer><p>BTU Studio · herramienta educativa · estimaciones no certificadas · sin telemetría de proyectos</p></footer></main><script>
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Calculadora didáctica de carga térmica — versión 6: transferencia por superficies</title>
+<meta name="theme-color" content="#181819"><link rel="manifest" href="./manifest.webmanifest"><link rel="apple-touch-icon" href="./icon.svg">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Calculadora BTU">
+<link rel="icon" href="./icon.svg" type="image/svg+xml">
+
+
+
+
+
+
+
+<style id="studio-final-design">
+:root{color-scheme:dark;--bg:#1c1c1d;--surface:#262627;--raised:#303031;--input:#353536;--text:#f2f1ee;--muted:#b8b7b3;--accent:#dedbd2;--edge:#444442;--warning:#d7b47e;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text)}
+*,*::before,*::after{box-sizing:border-box}html{width:100%;max-width:100%;overflow-x:clip;scroll-behavior:smooth;scroll-padding-top:28px}body{width:min(100%,1120px);max-width:1120px;min-width:0;margin:0 auto;padding:clamp(14px,3vw,32px) clamp(14px,3vw,32px) 76px;background:var(--bg);color:var(--text);overflow-x:clip;overflow-wrap:break-word}body *{min-width:0}h1,h2,h3,p{max-width:100%}h1{font-size:clamp(2.1rem,6vw,4.2rem);line-height:1.06;letter-spacing:-.055em;margin:22px 0 10px;font-weight:800;color:var(--text)}h1::before{content:"BTU STUDIO  /  LABORATORIO TÉRMICO";display:block;margin-bottom:14px;font-size:.7rem;line-height:1.5;letter-spacing:.12em;font-weight:750;color:var(--muted)}h2{font-size:clamp(1.17rem,2.4vw,1.65rem);line-height:1.25;letter-spacing:-.028em;font-weight:750;margin:0 0 14px;color:var(--text)}h3{font-size:1.02rem;line-height:1.4;font-weight:720;color:var(--text)}p{line-height:1.65;margin:10px 0 15px}.sub,.hint,small,.studio-mini,.material-card p,.metric span{color:var(--muted);font-size:.88rem;line-height:1.6}strong,b{font-weight:750}label{display:block;margin:0 0 7px;font-size:.86rem;line-height:1.45;font-weight:680;color:#e3e2de}
+.panel{background:var(--surface);border:0;border-radius:16px;padding:clamp(18px,3vw,30px);margin:16px 0;box-shadow:none}.panel:hover{border:0;box-shadow:none}.grid,.material-grid,.metrics,.studio-extra{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid>*,.material-grid>*,.metrics>*,.studio-extra>*{min-width:0}.material-card,.metric,.studio-viz{background:var(--raised);border:0;border-radius:13px;padding:clamp(14px,2vw,20px);box-shadow:none}.material-card p{margin:.4rem 0}.metric span{display:block}.result{font-size:clamp(1.35rem,2.8vw,2rem);font-weight:800;letter-spacing:-.035em;color:var(--text);font-variant-numeric:tabular-nums}
+input,select,textarea{display:block;width:100%;max-width:100%;min-width:0;min-height:46px;border:1px solid var(--edge);border-radius:9px;padding:10px 12px;font:inherit;font-size:16px;background:var(--input);color:var(--text);box-shadow:none}input::placeholder{color:#b1b0ac}input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid #f1e8c8;outline-offset:3px}button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;max-width:100%;border:0;border-radius:9px;background:#454544;color:var(--text);padding:10px 14px;font:inherit;font-size:.9rem;font-weight:720;cursor:pointer;box-shadow:none;white-space:normal;text-align:center;overflow-wrap:anywhere;transition:background .18s ease}button:hover{background:#545452;transform:none;box-shadow:none}button.primary{background:#d9d6ce;color:#222220}button.primary:hover{background:#efede7}button.secondary{background:#3a3a3b;color:#f1f1ed}.note,.good{border:0;border-left:3px solid #bca67d;border-radius:9px;padding:12px 14px;background:#38342f;color:#f1e5cf;line-height:1.6}.good{border-left-color:#a7b6a6;background:#303832;color:#e5f0e6}details{padding:14px 0;border-top:1px solid #454543}summary{font-weight:750;cursor:pointer}code{background:#393939;color:#e7e4de;padding:2px 5px;border-radius:5px}
+.studio-head{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between}.studio-tag{border:0;border-radius:100px;background:#303031;color:#d7d6d1;padding:9px 13px;font-size:.77rem;font-weight:650}.studio-toolbar{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin:18px 0 12px}.studio-toolbar label{display:flex;align-items:center;justify-content:center;gap:8px;margin:0;padding:9px 10px;border:0;border-radius:9px;background:#2d2d2e;font-size:.8rem;font-weight:650}.studio-toolbar label input{flex:0 0 18px;width:18px;height:18px;min-height:18px;accent-color:#dedbd2}.studio-toolbar button{width:100%;font-size:.82rem}.studio-toolbar input[type=file]{display:none}.studio-actions{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1.5fr) repeat(2,minmax(0,1fr));gap:9px;align-items:stretch}.studio-actions>*{width:100%;max-width:100%!important}.studio-nav{position:relative;top:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin:18px 0 12px;padding:8px;border:0;border-radius:13px;background:#282829;overflow:visible;backdrop-filter:none}.studio-nav button{display:flex;align-items:center;justify-content:center;white-space:normal;min-height:42px;padding:9px 7px;border:0;border-radius:8px;background:transparent;font-size:.8rem;line-height:1.35}.studio-nav button.active{background:#484847;color:#fff;border:0}.studio-progress{position:relative;top:auto;border:0;border-radius:13px;padding:14px 16px;background:#282829}.studio-progress-line{display:flex;justify-content:space-between;gap:10px;font-size:.82rem;color:#dddcd8}.studio-progress-track,.track{height:9px;background:#3d3d3e;border:0;border-radius:9px;overflow:hidden}.studio-progress-fill,.bar{height:100%;background:#d3d0c8;border-radius:9px;transition:width .25s ease}.studio-dashboard{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:18px 0}.studio-viz{padding:clamp(16px,2vw,22px);min-width:0}.studio-viz h3{margin:0 0 12px;font-size:.94rem}.studio-viz svg{display:block;width:100%;height:auto;max-height:190px;overflow:visible}.studio-viz svg text{fill:#e6e4dd}.studio-viz svg path{stroke:#b5b2aa}.studio-viz svg rect:not([fill="none"]){opacity:.75}.studio-viz svg circle{fill:#d8c6a4;stroke:#efede7}.studio-screen-reader{position:absolute;left:-9999px}.studio-screen-reader:focus{left:10px;top:10px;z-index:100;padding:12px;background:#fff;color:#000}.studio-extra .field{display:flex;flex-direction:column;gap:0}.studio-extra .field label{flex:1}.chartrows{display:grid;gap:12px;max-width:100%}.chartrow{display:grid;grid-template-columns:minmax(0,140px) minmax(0,1fr) minmax(0,85px);gap:10px;align-items:center;max-width:100%;font-size:.86rem}.chartval{text-align:right;font-variant-numeric:tabular-nums}.track{height:15px}.examplebuttons{display:flex;flex-wrap:wrap;gap:8px}.studio-contrast{--bg:#050505;--surface:#101010;--raised:#171717;--input:#0b0b0b;--text:#fff;--muted:#fff;--edge:#fff;--accent:#fff}.studio-large{font-size:19px}.studio-reduced *, .studio-reduced *::before,.studio-reduced *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+@media(max-width:800px){.studio-toolbar{grid-template-columns:repeat(2,minmax(0,1fr))}.studio-actions{grid-template-columns:repeat(2,minmax(0,1fr))}.studio-dashboard{grid-template-columns:1fr}.studio-nav{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:580px){body{padding:12px 12px 60px}.grid,.material-grid,.metrics,.studio-extra{grid-template-columns:minmax(0,1fr)}.studio-toolbar{grid-template-columns:repeat(2,minmax(0,1fr))}.studio-toolbar label{font-size:.76rem}.studio-actions{grid-template-columns:repeat(2,minmax(0,1fr))}.studio-actions input,.studio-actions select{grid-column:span 2}.studio-nav{grid-template-columns:repeat(2,minmax(0,1fr))}.studio-nav button{font-size:.76rem}.chartrow{grid-template-columns:minmax(0,76px) minmax(0,1fr) minmax(0,60px);gap:5px;font-size:.75rem}.panel{padding:17px}.studio-viz svg{max-height:165px}}
+@media(max-width:340px){.studio-toolbar{grid-template-columns:1fr}.studio-actions{grid-template-columns:1fr}.studio-actions input,.studio-actions select{grid-column:auto}.chartrow{grid-template-columns:minmax(0,65px) minmax(0,1fr) minmax(0,55px)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}@media print{body{background:white;color:black}.studio-nav,.studio-toolbar,.studio-progress,.studio-actions{display:none}.panel,.studio-viz,.metric{background:white;color:black;border:1px solid #ccc}}
+.studio-intro{padding:18px 0 9px}.studio-intro h1{margin:0 0 8px}.studio-intro .sub{font-size:1rem;max-width:65ch}.studio-intro h1::before{display:none}.studio-head{margin:10px 0 18px}.studio-nav-wrap{margin:16px 0}.studio-nav-wrap>label,.studio-nav-wrap>select{display:none}.studio-nav{grid-template-columns:repeat(4,minmax(0,1fr));margin:0}.studio-nav button{font-size:.78rem;line-height:1.4}.studio-progress{margin:14px 0}.studio-viz svg{max-height:200px}
+@media(max-width:800px){.studio-nav{display:none}.studio-nav-wrap>label{display:block}.studio-nav-wrap>select{display:block}.studio-nav-wrap{padding:13px;background:var(--surface);border-radius:13px}.studio-intro{padding:15px 0 6px}.studio-intro h1{font-size:clamp(1.9rem,6vw,2.8rem)}}
+</style></head>
+<body>
+<a class="studio-screen-reader" href="#mode">Saltar a la calculadora</a>
+<div class="studio-intro"><h1>Calculadora didáctica de carga térmica</h1>
+<p class="sub">Primero elige cómo vas a trabajar; la calculadora adapta las indicaciones. Estima la carga en <b>kW, BTU/h y toneladas de refrigeración</b>.</p></div>
+<div class="studio-head"><span class="studio-tag">❄ Refrigeración industrial · Calculadora v6 mejorada</span><span class="studio-tag">🔒 Sin cuenta · Datos locales</span></div>
+<div class="studio-toolbar" role="group" aria-label="Accesibilidad y archivos">
+<label><input type="checkbox" id="studioContrast"> Alto contraste</label>
+<label><input type="checkbox" id="studioLarge"> Texto grande</label>
+<label><input type="checkbox" id="studioReduced"> Reducir movimiento</label>
+<button type="button" id="studioSave" class="primary">💾 Guardar proyecto</button>
+<button type="button" id="studioExport">⬇ Exportar JSON</button>
+<button type="button" id="studioImport">⬆ Importar JSON</button>
+<button type="button" id="studioPrint">🖨 Imprimir</button>
+<input type="file" id="studioFile" accept=".json,application/json" hidden>
+</div>
+<div class="studio-actions" aria-label="Proyectos guardados">
+<input type="text" id="studioProjectName" placeholder="Nombre del proyecto" aria-label="Nombre del proyecto">
+<select id="studioProjectList" aria-label="Proyectos guardados"><option value="">Proyectos locales</option></select>
+<button type="button" id="studioLoad">Abrir</button><button type="button" id="studioDelete">Eliminar</button>
+</div>
+<p id="studioStatus" class="studio-mini" role="status" aria-live="polite">Los valores se guardan automáticamente en este navegador. Exporta JSON para respaldo.</p>
+<div class="studio-nav-wrap"><label for="studioNavSelect">Ir a una sección</label><select id="studioNavSelect" aria-label="Ir a una sección"></select><nav class="studio-nav" id="studioNav" aria-label="Navegación por secciones"></nav></div>
+<div class="studio-progress"><div class="studio-progress-line"><b>◈ Avance de configuración</b><output id="studioProgressText">0%</output></div><div class="studio-progress-track" role="progressbar" aria-label="Campos de cálculo completados" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="studioProgress"><div class="studio-progress-fill" id="studioProgressFill"></div></div></div>
+<div class="studio-dashboard">
+<div class="studio-viz"><h3>Cámara frigorífica · Geometría</h3><svg viewBox="0 0 420 210" role="img" aria-label="Esquema tridimensional de cámara rectangular con largo, ancho y altura"><defs><linearGradient id="room" x2="1" y2="1"><stop stop-color="#66645f"/><stop offset="1" stop-color="#3e3e3d"/></linearGradient></defs><path d="M75 73 236 31 349 79 185 126Z" fill="#585856" stroke="#aaa9a4" stroke-width="2"/><path d="M75 73 185 126 185 189 75 133Z" fill="url(#room)" stroke="#aaa9a4" stroke-width="2"/><path d="M185 126 349 79 349 141 185 189Z" fill="#484847" stroke="#aaa9a4" stroke-width="2"/><path d="M75 133 185 189 349 141" fill="none" stroke="#aaa9a4" stroke-width="2"/><g fill="#e4e2db" font-size="14" font-family="system-ui"><text x="126" y="206" id="studioDimL">Largo</text><text x="278" y="180" id="studioDimW">Ancho</text><text x="20" y="113" id="studioDimH">Altura</text></g></svg><p class="studio-mini" id="studioVolume">Volumen: —</p></div>
+<div class="studio-viz"><h3>Temperaturas de diseño · Comparación</h3><svg viewBox="0 0 420 210" role="img" aria-label="Comparación de temperaturas interior y exterior"><rect x="32" y="55" width="356" height="28" rx="14" fill="#454544"/><rect x="32" y="55" width="170" height="28" rx="14" fill="#b7b4ac" id="studioTempBar"/><circle cx="202" cy="69" r="19" fill="#d4c29f" stroke="#fff" stroke-width="2"/><g font-size="17" fill="#e4e2db" font-family="system-ui"><text x="30" y="32" id="studioTiText">Interior — °C</text><text x="225" y="32" id="studioToText">Exterior — °C</text><text x="30" y="133" id="studioDeltaText">ΔT — °C</text><text x="30" y="167" id="studioSeasonText">Temporada: —</text></g></svg><p class="studio-mini">La temporada documenta el escenario; no inventa ajustes meteorológicos automáticos.</p></div>
+</div>
+
+<section class="panel" id="studioSeasonalPanel">
+<h2>Compensación térmica por temporada y material</h2>
+<p class="hint">La época del año puede cambiar las condiciones exteriores y la conductividad de algunos materiales. Define los datos reales para tu instalación; no se aplican coeficientes genéricos sin respaldo.</p>
+<div class="studio-extra">
+<div class="field"><label for="seasonTo">Temperatura exterior de esta temporada (°C)</label><input id="seasonTo" type="number" step="any" placeholder="Usar temperatura exterior principal"></div>
+<div class="field"><label for="seasonTf">Temperatura bajo piso de esta temporada (°C)</label><input id="seasonTf" type="number" step="any" placeholder="Usar temperatura del piso principal"></div>
+<div class="field"><label for="referenceTemp">Temperatura de referencia de ficha técnica (°C)</label><input id="referenceTemp" type="number" step="any" value="20"></div>
+<div class="field"><label for="alphaWall">Variación de U de paredes por °C (1/°C)</label><input id="alphaWall" type="number" step="any" value="0"></div>
+<div class="field"><label for="alphaRoof">Variación de U de techo por °C (1/°C)</label><input id="alphaRoof" type="number" step="any" value="0"></div>
+<div class="field"><label for="alphaFloor">Variación de U de piso por °C (1/°C)</label><input id="alphaFloor" type="number" step="any" value="0"></div>
+<div class="field"><label for="wetWall">Factor de humedad / condición de pared</label><input id="wetWall" type="number" step="any" min="0" value="1"></div>
+<div class="field"><label for="wetRoof">Factor de humedad / condición de techo</label><input id="wetRoof" type="number" step="any" min="0" value="1"></div>
+<div class="field"><label for="wetFloor">Factor de humedad / condición de piso</label><input id="wetFloor" type="number" step="any" min="0" value="1"></div>
+</div>
+<div class="note"><b>Cómo se aplica:</b> U efectiva = U de referencia × [1 + α × (temperatura media del elemento − temperatura de referencia)] × factor de humedad. α = 0 y factor = 1 mantienen intacto el cálculo original. Esta aproximación lineal solo es válida dentro del intervalo de la ficha técnica. Para paneles multicapa, puentes térmicos y cambios de fase se necesita un modelo por capas o datos medidos.</div>
+<div class="studio-actions"><button type="button" id="saveSeasonProfile">Guardar condiciones de esta temporada</button><button type="button" id="clearSeasonProfile">Restablecer condiciones de temporada</button></div><p id="seasonProfileStatus" class="studio-mini" role="status">Puedes guardar condiciones distintas para primavera, verano, otoño e invierno en este teléfono.</p>
+<div id="seasonalTrace" class="good" role="status" aria-live="polite">Sin compensación adicional hasta especificar parámetros.</div>
+</section>
+<section class="panel" id="studioContext"><h2>00 · Escenario y condiciones de diseño</h2><p class="hint">Todos los ajustes de contexto son editables. Las condiciones reales de diseño deben introducirse en las temperaturas y demás variables físicas.</p><div class="studio-extra"><div class="field"><label for="studioSeason">Época del año</label><select id="studioSeason"><option>Primavera</option><option selected>Verano</option><option>Otoño</option><option>Invierno</option><option>Personalizada</option></select></div><div class="field"><label for="studioMonth">Mes de referencia</label><select id="studioMonth"><option value="">No definido</option><option>Enero</option><option>Febrero</option><option>Marzo</option><option>Abril</option><option>Mayo</option><option>Junio</option><option>Julio</option><option>Agosto</option><option>Septiembre</option><option>Octubre</option><option>Noviembre</option><option>Diciembre</option></select></div><div class="field"><label for="studioLocation">Ubicación / estación climática</label><input id="studioLocation" placeholder="Ciudad o instalación"></div><div class="field"><label for="studioProjectType">Tipo de proyecto</label><select id="studioProjectType"><option>Cámara de conservación</option><option>Cámara de congelación</option><option>Almacén refrigerado</option><option>Laboratorio / práctica</option><option>Otro</option></select></div></div></section>
+
+
+<section class="panel">
+<h2>Modo de cálculo</h2>
+<div class="grid">
+<div><label for="mode">¿Qué datos tienes?</label>
+<select id="mode" onchange="setMode()">
+<option value="manufacturer">Tengo especificaciones del fabricante</option>
+<option value="experiment" selected>Quiero experimentar / hacer una estimación</option>
+</select></div>
+<div><label>¿Qué cambia?</label><p id="modeSummary" class="hint">Usa valores de ejemplo y cambia una variable a la vez para aprender su efecto.</p></div>
+</div>
+<div id="manufacturerHelp" class="good" hidden><b>Modo fabricante:</b> introduce los valores U de la ficha técnica de paredes, techo y piso, y los datos reales del proceso. Si la ficha da conductividad térmica (λ) en vez de U, no son el mismo valor: convierte con el espesor y las capas o utiliza el valor U certificado del conjunto. La capacidad del compresor debe verificarse por separado con las condiciones de operación y tablas del fabricante.</div>
+<div id="experimentHelp" class="note"><b>Modo experimental:</b> puedes elegir materiales predefinidos con coeficientes U aproximados. Son para aprender, no para certificar el diseño.</div>
+</section>
+<div class="note"><b>Importante:</b> es una herramienta de aprendizaje con simplificaciones. No sustituye un cálculo de diseño: puentes térmicos, infiltración real, humedad, deshielo, embalaje, respiración del producto y condiciones del refrigerante pueden cambiar el resultado.</div>
+
+<section class="panel">
+<h2>1. Cámara y temperaturas</h2>
+<div class="grid">
+<div><label for="L">Largo (m)</label><input id="L" type="number" min="0" step=".1" value="10"></div>
+<div><label for="W">Ancho (m)</label><input id="W" type="number" min="0" step=".1" value="8"></div>
+<div><label for="H">Altura (m)</label><input id="H" type="number" min="0" step=".1" value="4"></div>
+<div><label for="Ti">Temperatura interior (°C)</label><input id="Ti" type="number" step=".1" value="2"></div>
+<div><label for="To">Temperatura exterior de diseño (°C)</label><input id="To" type="number" step=".1" value="35"></div>
+<div><label for="margin">Margen adicional (%)</label><input id="margin" type="number" min="0" max="100" step="1" value="10"></div>
+</div>
+<p class="hint">El exterior debe representar la condición de diseño más exigente, no necesariamente la temperatura que marca el clima en este momento.</p>
+</section>
+
+<section class="panel">
+<h2>2. Transmisión por paredes, techo y piso</h2>
+<p>U es el coeficiente de transferencia térmica: cuanto mayor sea U, más calor atraviesa cada metro cuadrado por cada grado de diferencia. Si no conoces U, deja el ejemplo solo para practicar.</p>
+<div class="grid">
+<div><label for="Uw">U paredes (W/m²·K)</label><input id="Uw" type="number" min="0" step=".01" value=".35"></div>
+<div><label for="Ur">U techo (W/m²·K)</label><input id="Ur" type="number" min="0" step=".01" value=".25"></div>
+<div><label for="Uf">U piso (W/m²·K)</label><input id="Uf" type="number" min="0" step=".01" value=".30"></div>
+<div><label for="Tf">Temperatura del lado exterior del piso (°C)</label><input id="Tf" type="number" step=".1" value="20"></div>
+</div>
+<p class="hint">Se estiman paredes como 2 × largo × altura + 2 × ancho × altura; techo y piso como largo × ancho. No se descuentan puertas ni ventanas.</p>
+<h3>Selecciona el material de cada superficie</h3>
+<p>Al elegir una construcción, la calculadora coloca un valor U aproximado. Puedes modificarlo manualmente si tienes la ficha técnica o el espesor real.</p>
+<div class="material-grid">
+<div class="material-card"><label for="wallType">Paredes</label><select id="wallType" onchange="applyMaterial('wallType','Uw')">
+<option value="custom">Valor manual / no sé el material</option>
+<option value="panel50">Panel aislado tipo sándwich, 50 mm</option>
+<option value="panel75">Panel aislado tipo sándwich, 75 mm</option>
+<option value="panel100" selected>Panel aislado tipo sándwich, 100 mm</option>
+<option value="block">Block/concreto sin aislamiento</option>
+<option value="brick">Ladrillo con aislamiento limitado</option>
+</select><p id="wallDesc">Valor orientativo: depende del núcleo, juntas y montaje.</p></div>
+<div class="material-card"><label for="roofType">Techo</label><select id="roofType" onchange="applyMaterial('roofType','Ur')">
+<option value="custom">Valor manual / no sé el material</option>
+<option value="panel50">Panel aislado tipo sándwich, 50 mm</option>
+<option value="panel75">Panel aislado tipo sándwich, 75 mm</option>
+<option value="panel100" selected>Panel aislado tipo sándwich, 100 mm</option>
+<option value="metal">Lámina metálica sin aislamiento</option>
+<option value="concrete">Losa de concreto sin aislamiento</option>
+</select><p id="roofDesc">El sol y el espacio sobre el techo pueden influir en la temperatura exterior efectiva.</p></div>
+<div class="material-card"><label for="floorType">Piso</label><select id="floorType" onchange="applyMaterial('floorType','Uf')">
+<option value="custom">Valor manual / no sé el material</option>
+<option value="insulated">Piso aislado</option>
+<option value="concrete" selected>Concreto sin aislamiento</option>
+<option value="ground">Piso sobre terreno (estimación)</option>
+</select><p id="floorDesc">El contacto con el terreno hace que la estimación real dependa de humedad, terreno y construcción.</p></div>
+</div>
+<div class="note"><b>Importante:</b> estos valores U son aproximaciones didácticas, no certificaciones del material. El valor real depende del espesor, conductividad, puentes térmicos, uniones y humedad. Para un cálculo de diseño, usa la ficha técnica.</div>
+<div class="panel" style="margin-top:14px;background:var(--soft,#f5f7fa)">
+<h3>Referencia automática de transferencia por superficie</h3>
+<p>Al cambiar largo, ancho, altura, material o U, se recalculan las áreas geométricas, la resistencia equivalente R = 1/U y la transferencia Q = U × área × diferencia de temperatura. Las áreas de paredes no descuentan puertas ni ventanas.</p>
+<div class="metrics">
+ <div class="metric"><span>Área total de paredes</span><div class="result" id="areaWallsOut">— m²</div></div>
+ <div class="metric"><span>Área de techo</span><div class="result" id="areaRoofOut">— m²</div></div>
+ <div class="metric"><span>Área de piso</span><div class="result" id="areaFloorOut">— m²</div></div>
+</div>
+<div class="grid">
+ <div class="metric"><span>Paredes · R equivalente</span><div class="result" id="rWallsOut">— m²·K/W</div><p id="qWallsOut">Transferencia: — W</p></div>
+ <div class="metric"><span>Techo · R equivalente</span><div class="result" id="rRoofOut">— m²·K/W</div><p id="qRoofOut">Transferencia: — W</p></div>
+ <div class="metric"><span>Piso · R equivalente</span><div class="result" id="rFloorOut">— m²·K/W</div><p id="qFloorOut">Transferencia: — W</p></div>
+</div>
+<p class="hint">R = 1/U solo representa la resistencia térmica equivalente asociada al U ingresado; no determina la resistencia de cada capa por separado. Los valores U preseleccionados son referencias aproximadas, no datos certificados del material.</p>
+</div>
+</section>
+
+<section class="panel">
+<h2>3. Producto que entra a la cámara</h2>
+<div class="grid">
+<div><label for="mass">Producto que entra (kg por día)</label><input id="mass" type="number" min="0" step="1" value="5000"></div>
+<div><label for="Tp">Temperatura de entrada del producto (°C)</label><input id="Tp" type="number" step=".1" value="20"></div>
+<div><label for="cp">Calor específico del producto (kJ/kg·K)</label><input id="cp" type="number" min="0" step=".01" value="3.8"></div>
+<div><label for="hours">Horas disponibles para enfriarlo</label><input id="hours" type="number" min=".1" step=".5" value="18"></div>
+</div>
+<p class="hint">El cálculo sensible supone que el producto solo se enfría, sin congelarse: energía = masa × calor específico × diferencia de temperatura. Si el producto entra más frío que la cámara, esta parte se toma como cero.</p>
+</section>
+
+<section class="panel">
+<h2>4. Aire que entra al abrir puertas (estimación simple)</h2>
+<div class="grid">
+<div><label for="ach">Renovaciones de aire por hora</label><input id="ach" type="number" min="0" step=".1" value="2"></div>
+<div><label for="airhours">Horas equivalentes de infiltración al día</label><input id="airhours" type="number" min="0" step=".1" value="4"></div>
+</div>
+<p class="hint">Modelo sensible simplificado: volumen × renovaciones/h × horas × densidad del aire × calor específico × diferencia de temperatura. No calcula carga latente por humedad; el resultado puede subestimar la infiltración real.</p>
+</section>
+
+<section class="panel">
+<h2>5. Equipos y actividad dentro de la cámara</h2>
+<div class="grid">
+<div><label for="motors">Motores/ventiladores dentro (kW eléctricos)</label><input id="motors" type="number" min="0" step=".1" value="1.5"></div>
+<div><label for="lights">Iluminación (kW)</label><input id="lights" type="number" min="0" step=".1" value=".2"></div>
+<div><label for="people">Personas (cantidad)</label><input id="people" type="number" min="0" step="1" value="1"></div>
+<div><label for="personW">Calor por persona (W/persona)</label><input id="personW" type="number" min="0" step="10" value="300"></div>
+<div><label for="other">Otras cargas térmicas (kW)</label><input id="other" type="number" min="0" step=".1" value="0"></div>
+</div>
+<p class="hint">La potencia eléctrica disipada dentro de la cámara acaba convirtiéndose mayormente en calor. Para motores fuera de la cámara, no sumes automáticamente toda su potencia.</p>
+</section>
+
+<section class="panel">
+<button onclick="calculate()">Calcular y explicar</button>
+<div class="examplebuttons">
+<button class="secondary" onclick="loadExample('conservacion')">Ejemplo: conservación</button>
+<button class="secondary" onclick="loadExample('producto')">Ejemplo: mucho producto</button>
+<button class="secondary" onclick="loadExample('aislamiento')">Ejemplo: mejor aislamiento</button>
+</div>
+<div id="out" aria-live="polite" style="margin-top:16px"></div>
+</section>
+
+<section class="panel">
+<h2>Cómo aprender a usarla</h2>
+<details open><summary>¿Qué significa BTU/h?</summary><p>BTU/h es una tasa de transferencia de calor: cuánta energía térmica se extrae cada hora. <b>1 kW ≈ 3,412 BTU/h</b> y <b>1 tonelada de refrigeración ≈ 12,000 BTU/h ≈ 3.517 kW</b>.</p></details>
+<details><summary>¿Qué variables suelen cambiar más el resultado?</summary><p>Normalmente, la cantidad y temperatura del producto, la diferencia entre exterior e interior, el aislamiento (U), la apertura de puertas y el tiempo disponible para enfriar. Cambia una sola entrada cada vez y observa cómo cambia la carga.</p></details>
+<details><summary>¿Por qué no se elige el compresor solo con BTU/h?</summary><p>La capacidad real del compresor depende de la temperatura de evaporación, temperatura de condensación, refrigerante, sobrecalentamiento/subenfriamiento y condiciones del fabricante. El resultado de esta página es una estimación de carga, no una selección directa del compresor.</p></details>
+</section>
+
+<section class="panel" id="reglaBlock">
+<h2>Regla didáctica: transferencia de calor a través de una pared de block</h2>
+<p>Para una estimación de conducción en estado estable a través de una pared plana:</p>
+<p><code>Q = A × ΔT / Rtotal</code> &nbsp; y &nbsp; <code>U = 1 / Rtotal</code></p>
+<p>Donde Q es la transferencia de calor en W, A es el área en m², ΔT es la diferencia de temperatura en °C (equivalente a K para una diferencia) y Rtotal es la resistencia térmica total en m²·K/W, incluyendo las capas de la pared y las resistencias superficiales interior y exterior.</p>
+<div class="grid">
+<div><label for="blockArea">Área de pared (m²)</label><input id="blockArea" type="number" min="0" step=".1" value="10" oninput="calcBlockRule()"></div>
+<div><label for="blockDelta">Diferencia de temperatura ΔT (°C)</label><input id="blockDelta" type="number" min="0" step=".1" value="18" oninput="calcBlockRule()"></div>
+<div><label for="blockR">Resistencia de la capa de block Rblock (m²·K/W)</label><input id="blockR" type="number" min="0.001" step=".01" value="0.22" oninput="calcBlockRule()"></div>
+<div><label for="blockRsi">Resistencia superficial interior Rsi (m²·K/W)</label><input id="blockRsi" type="number" min="0" step=".01" value="0.13" oninput="calcBlockRule()"></div>
+<div><label for="blockRse">Resistencia superficial exterior Rse (m²·K/W)</label><input id="blockRse" type="number" min="0" step=".01" value="0.04" oninput="calcBlockRule()"></div>
+</div>
+<div class="metrics" style="margin-top:12px">
+<div class="metric"><span>Rtotal calculada</span><div class="result" id="blockRtotal">0.39 m²·K/W</div></div>
+<div class="metric"><span>U equivalente</span><div class="result" id="blockU">2.56 W/m²·K</div></div>
+<div class="metric"><span>Transferencia de calor</span><div class="result" id="blockW">461.54 W</div></div>
+<div class="metric"><span>Equivalente térmico</span><div class="result" id="blockBTU">1,575 BTU/h</div></div>
+</div>
+<div class="note" style="margin-top:12px"><b>Ejemplo de referencia aportado por el usuario:</b> para A = 10 m², ΔT = 18 °C y Rtotal aproximada de 0.40 m²·K/W, Q = 10 × 18 / 0.40 = 450 W, equivalente a aproximadamente 1,535 BTU/h. El valor Rblock de 0.18–0.22 m²·K/W es orientativo y no debe aplicarse a cualquier block sin conocer tipo, espesor, huecos, mortero y acabados. Los valores de las resistencias superficiales dependen de las condiciones y del método utilizado.</div>
+<p><button type="button" class="secondary" onclick="useBlockU()">Usar U calculada como valor manual de paredes</button></p>
+<p class="hint">Al pulsar el botón, se copia la U calculada al campo de paredes de la calculadora principal. Esto no certifica el muro ni incorpora automáticamente puentes térmicos.</p>
+<p>Fuentes técnicas: <a href="https://handbook.ashrae.org/Handbooks/F25/SI/f25_Ch25/f25_Ch25_si.aspx" target="_blank" rel="noopener">ASHRAE Handbook, capítulo 25: resistencia térmica y factor U</a>; <a href="https://www.iso.org/standard/65708.html" target="_blank" rel="noopener">ISO 6946:2017, método de cálculo de resistencia y transmitancia térmica</a>.</p>
+</section>
+
+<script>
+const n=id=>Number(document.getElementById(id).value)||0;
+const materialU={
+ panel50:{u:0.45,desc:"U ≈ 0.45 W/m²·K (orientativo; panel de 50 mm)."},
+ panel75:{u:0.30,desc:"U ≈ 0.30 W/m²·K (orientativo; panel de 75 mm)."},
+ panel100:{u:0.22,desc:"U ≈ 0.22 W/m²·K (orientativo; panel de 100 mm)."},
+ block:{u:2.5,desc:"U ≈ 2.5 W/m²·K como ejemplo derivado de Rtotal ≈ 0.40 m²·K/W; solo orientativo. La pared real puede variar mucho."},
+ brick:{u:1.2,desc:"U ≈ 1.2 W/m²·K como ejemplo de ladrillo con aislamiento limitado; depende de capas y espesor."},
+ metal:{u:5.0,desc:"U ≈ 5.0 W/m²·K como valor ilustrativo de lámina sin aislamiento; puede variar."},
+ concrete:{u:2.5,desc:"U ≈ 2.5 W/m²·K como ejemplo de concreto/losa sin aislamiento; construcción real puede variar."},
+ insulated:{u:0.35,desc:"U ≈ 0.35 W/m²·K como ejemplo didáctico de piso aislado."},
+ ground:{u:0.7,desc:"U equivalente ≈ 0.7 W/m²·K usado solo como simplificación para piso sobre terreno."}
+};
+
+function calcBlockRule(){
+ const area=Math.max(0,Number(document.getElementById('blockArea').value)||0);
+ const delta=Math.max(0,Number(document.getElementById('blockDelta').value)||0);
+ const rb=Math.max(0,Number(document.getElementById('blockR').value)||0);
+ const rsi=Math.max(0,Number(document.getElementById('blockRsi').value)||0);
+ const rse=Math.max(0,Number(document.getElementById('blockRse').value)||0);
+ const rt=rb+rsi+rse;
+ const u=rt>0?1/rt:0;
+ const q=rt>0?area*delta/rt:0;
+ document.getElementById('blockRtotal').textContent=fmt(rt)+' m²·K/W';
+ document.getElementById('blockU').textContent=fmt(u)+' W/m²·K';
+ document.getElementById('blockW').textContent=fmt(q)+' W';
+ document.getElementById('blockBTU').textContent=fmt(q*3.412142)+' BTU/h';
+}
+function useBlockU(){
+ calcBlockRule();
+ const rt=(Math.max(0,Number(document.getElementById('blockR').value)||0)+Math.max(0,Number(document.getElementById('blockRsi').value)||0)+Math.max(0,Number(document.getElementById('blockRse').value)||0));
+ if(rt<=0){alert('Introduce una resistencia total mayor que cero.');return;}
+ document.getElementById('Uw').value=1/rt;
+ document.getElementById('wallType').value='custom';
+ document.getElementById('wallDesc').textContent='U manual copiada desde el módulo didáctico de resistencia térmica; verifica la construcción real.';
+ calculate();
+}
+
+function setMode(){
+ const mode=document.getElementById('mode').value;
+ const manuf=mode==='manufacturer';
+ document.getElementById('manufacturerHelp').hidden=!manuf;
+ document.getElementById('experimentHelp').hidden=manuf;
+ document.getElementById('modeSummary').textContent=manuf
+ ?'Prioriza datos de fichas técnicas y mediciones reales. Las opciones de material no sustituyen las especificaciones.'
+ :'Usa valores de ejemplo y cambia una variable a la vez para aprender su efecto.';
+ ['wallType','roofType','floorType'].forEach(id=>{
+  const el=document.getElementById(id);
+  el.disabled=manuf;
+ });
+ if(manuf){
+  ['wallType','roofType','floorType'].forEach(id=>document.getElementById(id).value='custom');
+  ['wallDesc','roofDesc','floorDesc'].forEach(id=>document.getElementById(id).textContent='Introduce el valor U certificado en el campo numérico correspondiente.');
+ }else{
+  ['wallType','roofType','floorType'].forEach(id=>document.getElementById(id).disabled=false);
+ }
+ calculate();
+}
+function applyMaterial(selectId,inputId){
+ const key=document.getElementById(selectId).value, item=materialU[key];
+ const input=document.getElementById(inputId);
+ const descId=selectId==='wallType'?'wallDesc':selectId==='roofType'?'roofDesc':'floorDesc';
+ if(item){input.value=item.u;document.getElementById(descId).textContent=item.desc;}
+ else {document.getElementById(descId).textContent="Valor U manual: introduce el valor de tu ficha técnica o una estimación documentada.";}
+ calculate();
+}
+const fmt=x=>Number.isFinite(x)?x.toLocaleString('es-MX',{maximumFractionDigits:2}):'—';
+function calculate(){
+ const L=n('L'),W=n('W'),H=n('H'),Ti=n('Ti'),To=n('To'),Tf=n('Tf');
+ const volume=L*W*H, wall=2*(L+W)*H, roof=L*W, floor=L*W;
+ const dTw=Math.max(0,To-Ti), dTf=Math.max(0,Tf-Ti);
+ const seasonalValue=(id,fallback)=>{const x=document.getElementById(id).value;return x===''?fallback:Number(x);};
+ const effectiveTo=seasonalValue('seasonTo',To),effectiveTf=seasonalValue('seasonTf',Tf);
+ const dTwSeason=Math.max(0,effectiveTo-Ti),dTfSeason=Math.max(0,effectiveTf-Ti);
+ const referenceTemp=seasonalValue('referenceTemp',20);
+ const effectiveU=(u,alpha,wet,mean)=>Math.max(0,u*Math.max(0,1+alpha*(mean-referenceTemp))*Math.max(0,wet));
+ const UwEff=effectiveU(n('Uw'),n('alphaWall'),n('wetWall'),(effectiveTo+Ti)/2);
+ const UrEff=effectiveU(n('Ur'),n('alphaRoof'),n('wetRoof'),(effectiveTo+Ti)/2);
+ const UfEff=effectiveU(n('Uf'),n('alphaFloor'),n('wetFloor'),(effectiveTf+Ti)/2);
+ const qWalls=UwEff*wall*dTwSeason/1000, qRoof=UrEff*roof*dTwSeason/1000, qFloor=UfEff*floor*dTfSeason/1000;
+ const seasonTrace=document.getElementById('seasonalTrace');
+ if(seasonTrace)seasonTrace.textContent='Temporada: '+document.getElementById('studioSeason').value+' · Exterior: '+fmt(effectiveTo)+' °C · Piso: '+fmt(effectiveTf)+' °C · U efectiva paredes: '+fmt(UwEff)+' · techo: '+fmt(UrEff)+' · piso: '+fmt(UfEff)+' W/m²·K. Las condiciones exteriores y las U efectivas se utilizan en el resultado.';
+
+ const qTrans=qWalls+qRoof+qFloor;
+ // Referencia automática de geometría, resistencia equivalente y transferencia por superficie.
+ const setText=(id,value)=>{const el=document.getElementById(id);if(el)el.textContent=value;};
+ setText('areaWallsOut',fmt(wall)+' m²'); setText('areaRoofOut',fmt(roof)+' m²'); setText('areaFloorOut',fmt(floor)+' m²');
+ const uw=n('Uw'),ur=n('Ur'),uf=n('Uf');
+ setText('rWallsOut',uw>0?fmt(1/uw)+' m²·K/W':'No calculable (U = 0)');
+ setText('rRoofOut',ur>0?fmt(1/ur)+' m²·K/W':'No calculable (U = 0)');
+ setText('rFloorOut',uf>0?fmt(1/uf)+' m²·K/W':'No calculable (U = 0)');
+ setText('qWallsOut','Transferencia: '+fmt(qWalls*1000)+' W · '+fmt(qWalls*3412.142)+' BTU/h');
+ setText('qRoofOut','Transferencia: '+fmt(qRoof*1000)+' W · '+fmt(qRoof*3412.142)+' BTU/h');
+ setText('qFloorOut','Transferencia: '+fmt(qFloor*1000)+' W · '+fmt(qFloor*3412.142)+' BTU/h');
+ const dTp=Math.max(0,n('Tp')-Ti);
+ const qProduct=n('mass')*n('cp')*dTp/(3600*Math.max(.1,n('hours')));
+ const qInf=volume*n('ach')*n('airhours')*1.2*1.005*dTwSeason/3600;
+ const qMot=n('motors'),qLight=n('lights'),qPeople=n('people')*n('personW')/1000,qOther=n('other');
+ const base=qTrans+qProduct+qInf+qMot+qLight+qPeople+qOther;
+ const total=base*(1+Math.max(0,n('margin'))/100);
+ const btu=total*3412.142, tr=btu/12000;
+ document.getElementById('out').innerHTML=`
+ <h2>Resultado estimado</h2>
+ <div class="metrics">
+ <div class="metric"><span>Carga calculada con margen</span><div class="result">${fmt(total)} kW</div></div>
+ <div class="metric"><span>Capacidad térmica equivalente</span><div class="result">${fmt(btu)} BTU/h</div></div>
+ <div class="metric"><span>Toneladas de refrigeración</span><div class="result">${fmt(tr)} TR</div></div>
+ <div class="metric"><span>Volumen de cámara</span><div class="result">${fmt(volume)} m³</div></div>
+ </div>
+ <p class="good"><b>Lectura rápida:</b> el modelo estima ${fmt(base)} kW de carga antes del margen. El ${fmt(n('margin'))}% adicional lleva el total a ${fmt(total)} kW. Este margen no corrige datos de entrada equivocados.</p>
+ <h3>Desglose: de dónde sale el número</h3>
+ <details open><summary>1. Paredes: ${fmt(qWalls)} kW</summary><p>Área estimada ${fmt(wall)} m² × U efectiva ${fmt(UwEff)} W/m²·K × diferencia ${fmt(dTwSeason)} °C. Se divide entre 1,000 para convertir W a kW. Si mejora el aislamiento, U baja y la carga disminuye.</p></details>
+ <details><summary>2. Techo: ${fmt(qRoof)} kW</summary><p>${fmt(roof)} m² × U efectiva ${fmt(UrEff)} × diferencia exterior-interior ${fmt(dTwSeason)} °C. Un techo expuesto al sol puede necesitar un tratamiento más detallado.</p></details>
+ <details><summary>3. Piso: ${fmt(qFloor)} kW</summary><p>${fmt(floor)} m² × U efectiva ${fmt(UfEff)} × diferencia piso-interior ${fmt(dTfSeason)} °C. Se usa la temperatura del lado exterior del piso que introdujiste.</p></details>
+ <details><summary>4. Producto: ${fmt(qProduct)} kW</summary><p>Masa ${fmt(n('mass'))} kg/día × calor específico ${fmt(n('cp'))} kJ/kg·K × descenso ${fmt(dTp)} °C, dividido entre ${fmt(n('hours'))} horas y 3,600 segundos/hora. Más producto, más diferencia de temperatura o menos tiempo de enfriamiento aumentan la potencia necesaria.</p></details>
+ <details><summary>5. Infiltración sensible: ${fmt(qInf)} kW</summary><p>Volumen ${fmt(volume)} m³ × ${fmt(n('ach'))} renovaciones/h × ${fmt(n('airhours'))} horas × 1.2 kg/m³ × 1.005 kJ/kg·K × diferencia ${fmt(dTwSeason)} °C, convertido a kW. Es una aproximación y no incluye humedad.</p></details>
+ <details><summary>6. Cargas internas: ${fmt(qMot+qLight+qPeople+qOther)} kW</summary><p>Motores ${fmt(qMot)} + luces ${fmt(qLight)} + personas ${fmt(qPeople)} + otras cargas ${fmt(qOther)}. Comprueba dónde está físicamente cada motor y cuánto tiempo opera.</p></details>
+ <p><b>Suma antes del margen:</b> ${fmt(qTrans)} kW de transmisión + ${fmt(qProduct)} kW de producto + ${fmt(qInf)} kW de infiltración + ${fmt(qMot+qLight+qPeople+qOther)} kW de cargas internas = <b>${fmt(base)} kW</b>.</p>
+ <h3>Gráfica: ¿qué aporta más calor?</h3>
+ <p class="hint">Las barras comparan cada aporte estimado en kW. Una barra más larga significa que esa parte exige más capacidad de refrigeración.</p>
+ <div class="chartrows">${[
+ ['Paredes',qWalls],['Techo',qRoof],['Piso',qFloor],['Producto',qProduct],['Aire que entra',qInf],['Motores',qMot],['Iluminación',qLight],['Personas',qPeople],['Otras cargas',qOther]
+ ].map(([label,val])=>`<div class="chartrow"><span>${label}</span><div class="track"><div class="bar" style="width:${base>0?Math.max(0,val/base*100):0}%"></div></div><span class="chartval">${fmt(val)} kW</span></div>`).join('')}</div>
+ <h3>Mini ejemplo: cambia una cosa y observa</h3>
+ <p>Con el botón <b>“Ejemplo: mucho producto”</b>, la masa de producto aumenta: verás subir esa barra y los BTU/h. Con <b>“mejor aislamiento”</b>, bajan los valores U y normalmente disminuye la carga por paredes, techo y piso.</p>
+ <div class="note"><b>Limitación técnica:</b> el cálculo no incluye carga latente de humedad, calor de respiración de vegetales, enfriamiento/congelación de envases, deshielo, infiltración medida, puentes térmicos ni perfiles horarios detallados. En refrigeración industrial, valida supuestos y selecciona evaporador/compresor con tablas del fabricante a las condiciones de operación reales.</div>`;
+}
+function loadExample(kind){
+ if(kind==='conservacion'){
+  const vals={L:10,W:8,H:4,Ti:2,To:35,margin:10,Uw:.35,Ur:.25,Uf:.3,Tf:20,mass:1000,Tp:8,cp:3.8,hours:18,ach:1,airhours:2,motors:.8,lights:.1,people:0,personW:300,other:0};
+  Object.entries(vals).forEach(([id,v])=>document.getElementById(id).value=v);
+  document.getElementById('wallType').value='panel100';document.getElementById('roofType').value='panel100';document.getElementById('floorType').value='concrete';
+ } else if(kind==='producto'){
+  document.getElementById('mass').value=10000;document.getElementById('Tp').value=25;document.getElementById('hours').value=12;
+ } else {
+  document.getElementById('Uw').value=.18;document.getElementById('Ur').value=.15;document.getElementById('Uf').value=.2;
+ }
+ calculate();
+}
+setMode();
+calcBlockRule();
+['L','W','H','Ti','To','Tf','Uw','Ur','Uf'].forEach(id=>{const el=document.getElementById(id);if(el)el.addEventListener('input',calculate);});
+calculate();
+</script>
+
+<script id="studio-enhancements">
+(function(){
 'use strict';
-const $=id=>document.getElementById(id),fields={},defaults={},state={};const opts=(...values)=>values.map(([v,t])=>[String(v),t]);
-const defs=[
-['contextFields','project','Nombre del proyecto','text','Proyecto nuevo'],['contextFields','mode','Sistema','select','cool',opts(['cool','❄ Enfriamiento'],['heat','🔥 Calefacción'])],['contextFields','room','Uso de la habitación','select','bed',opts(['bed','Recámara'],['living','Sala'],['kitchen','Cocina'],['office','Oficina'],['garage','Cochera'])],['contextFields','units','Unidades geométricas','select','m',opts(['m','Metros / m²'],['ft','Pies / ft²'])],['contextFields','season','Época del año','select','summer',opts(['spring','Primavera'],['summer','Verano'],['autumn','Otoño'],['winter','Invierno'],['custom','Personalizada'])],['contextFields','month','Mes de diseño','select','',opts(['','Sin especificar'],...['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'].map((m,i)=>[i+1,m]))],['contextFields','location','Localidad / estación climática','text',''],['geometryFields','len','Largo','number',''],['geometryFields','wid','Ancho','number',''],['geometryFields','floor','Área de piso','number',''],['geometryFields','h','Altura de techo','number',''],['geometryFields','ppl','Ocupantes habituales','number','2'],['envelopeFields','win','Cantidad de ventanas','number','1'],['envelopeFields','sun','Exposición solar','select','1',opts(['1','Normal'],['1.1','Soleada'],['0.9','Sombreada'])],['envelopeFields','ins','Calidad de aislamiento','select','1',opts(['1','Promedio'],['0.9','Buena'],['1.2','Deficiente'])],['envelopeFields','clim','Severidad climática','select','1',opts(['1','Templado'],['1.15','Caluroso / frío'],['1.3','Extremo'])],
-['physicalFields','outTemp','Temperatura exterior de diseño (°C)','number',''],['physicalFields','inTemp','Temperatura interior objetivo (°C)','number',''],['physicalFields','rh','Humedad relativa interior (%)','number',''],['physicalFields','wallArea','Área exterior de muros (m²)','number',''],['physicalFields','wallU','Transmitancia de muros U (W/m²K)','number',''],['physicalFields','windowArea','Área de ventanas (m²)','number',''],['physicalFields','windowU','Transmitancia de ventanas U (W/m²K)','number',''],['physicalFields','roofArea','Área de techo exterior (m²)','number',''],['physicalFields','roofU','Transmitancia de techo U (W/m²K)','number',''],['physicalFields','orientation','Orientación de ventanas','select','',opts(['','Sin definir'],['N','Norte'],['E','Este'],['S','Sur'],['W','Oeste'],['multiple','Varias'])],['physicalFields','shgc','Coeficiente de ganancia solar SHGC','number',''],['physicalFields','irradiance','Irradiancia solar incidente (W/m²)','number',''],['physicalFields','ach','Renovaciones de aire por hora (ACH)','number',''],['physicalFields','vent','Ventilación exterior (L/s)','number',''],['physicalFields','watts','Potencia de equipos / iluminación (W)','number',''],['physicalFields','notes','Observaciones','textarea',''],
-['factorFields','baseCool','Base frío (BTU/h por ft²)','number','20'],['factorFields','baseHeat','Base calor (BTU/h por ft²)','number','30'],['factorFields','perPerson','Carga por persona adicional (BTU/h)','number','600'],['factorFields','perWindowCool','Carga por ventana, frío (BTU/h)','number','1000'],['factorFields','perWindowHeat','Carga por ventana, calor (BTU/h)','number','800'],['factorFields','heightCoeff','Ajuste por pie de altura','number','0.12'],['factorFields','kitchenExtra','Extra cocina, frío (BTU/h)','number','4000'],['factorFields','officeExtra','Extra oficina, frío (BTU/h)','number','800'],['factorFields','customSun','Factor solar adicional','number','1'],['factorFields','customIns','Factor aislamiento adicional','number','1'],['factorFields','customClimate','Factor clima adicional','number','1'],['factorFields','customRoom','Factor uso adicional','number','1'],['factorFields','seasonFactor','Factor estacional manual','number','1'],['factorFields','roundStep','Intervalo de redondeo (BTU/h)','number','500'],
-['methodFields','method','Método mostrado','select','both',opts(['both','Ambos (recomendado)'],['heuristic','Solo estimación simplificada'],['physical','Solo componentes físicos conocidos'])]];
-for(const [group,id,label,type,value,options] of defs){const box=document.createElement('div');box.className='field';const lab=document.createElement('label');lab.htmlFor=id;lab.textContent=label;let el=document.createElement(type==='select'?'select':type==='textarea'?'textarea':'input');el.id=id;if(type==='number'){el.type='number';el.step='any';if(!['outTemp','inTemp'].includes(id))el.min='0'}else if(type==='text')el.type='text';if(type==='select')for(const [v,t] of options){const o=document.createElement('option');o.value=v;o.textContent=t;el.append(o)}el.value=value;box.append(lab,el);$(group).append(box);fields[id]=el;defaults[id]=value;state[id]=value}
-const num=id=>{const v=fields[id].value;return v===''?null:Number(v)},n=id=>num(id)??0,fmt=v=>Number.isFinite(v)?v.toLocaleString('es-MX',{maximumFractionDigits:2}):'—';
-let lastUnit='m',updating=false,lessonIndex=0,lastCalc=null;
-const lessons=[['Dimensiones','Mide largo y ancho de muro a muro.','Largo × ancho = área. También puedes ingresar el área sin dimensiones.','len'],['Altura','Mide del piso al techo. Si no se especifica se usa 8 ft como supuesto visible.','La altura influye en el factor de volumen de la estimación.','h'],['Ocupación','Cuenta las personas que normalmente ocupan el espacio al mismo tiempo.','Las personas generan calor sensible y latente.','ppl'],['Ventanas','Cuenta las ventanas y registra también el área real de vidrio en Ingeniería.','La cantidad se usa en la regla simplificada; el área se usa en el modelo físico.','win'],['Sol','Identifica si la habitación recibe sol directo y la orientación del vidrio.','La radiación depende de orientación, estación, hora, sombra y SHGC.','sun'],['Aislamiento','Revisa paredes, techo y ventanas; usa valores U verificados si los conoces.','Una menor transmitancia U reduce el flujo de calor por conducción.','ins'],['Clima y temporada','Selecciona temporada, mes y temperatura exterior de diseño.','La diferencia de temperatura influye en las pérdidas o ganancias de calor físicas.','season'],['Resultados y límites','Revisa cada factor, el desglose, los componentes calculados y los datos faltantes.','Una estimación no sustituye el procedimiento profesional de carga térmica.','method']];
-function showTab(id){document.querySelectorAll('main section').forEach(s=>s.classList.toggle('hide',s.id!==id));document.querySelectorAll('[data-tab]').forEach(b=>{if(b.dataset.tab===id)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current')})}
-document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>showTab(b.dataset.tab));document.querySelectorAll('[data-goto]').forEach(b=>b.onclick=()=>showTab(b.dataset.goto));
-function updateLesson(){const [title,what,why,id]=lessons[lessonIndex];$('lesson').replaceChildren();const h=document.createElement('h3');h.textContent='Paso '+(lessonIndex+1)+' de 8 · '+title;const p=document.createElement('p');p.textContent=what;const q=document.createElement('p');q.textContent='¿Por qué importa? '+why;const b=document.createElement('button');b.textContent='Editar este dato →';b.onclick=()=>{const t=fields[id].closest('section');showTab(t.id);fields[id].scrollIntoView({block:'center'});fields[id].focus()};$('lesson').append(h,p,q,b);$('previous').disabled=lessonIndex===0;$('next').textContent=lessonIndex===7?'Volver al inicio':'Siguiente →'}
-$('previous').onclick=()=>{lessonIndex=Math.max(0,lessonIndex-1);updateLesson()};$('next').onclick=()=>{lessonIndex=(lessonIndex+1)%8;updateLesson()};
-function compute(){
-const unit=fields.units.value,area=n('floor')||(n('len')*n('wid')),sqft=area*(unit==='m'?10.7639104:1),hft=(num('h')??(unit==='m'?2.4384:8))*(unit==='m'?3.280839895:1),height=Math.max(.75,1+(hft-8)*n('heightCoeff')),people=n('ppl'),windows=n('win'),cool=fields.mode.value==='cool',room=fields.room.value;
-const base=cool?sqft*n('baseCool')*height+Math.max(0,people-2)*n('perPerson')+windows*n('perWindowCool')+(room==='kitchen'?n('kitchenExtra'):room==='office'?n('officeExtra'):0):sqft*n('baseHeat')*height+windows*n('perWindowHeat');
-const sun=n('sun'),ins=n('ins'),clim=n('clim');const original=cool?sun*ins*clim:(sun===1.1?.95:sun===.9?1.05:1)*(ins===.9?.85:ins===1.2?1.25:1)*(clim===1.3?1.4:clim===1.15?1.2:1)*({kitchen:.9,garage:1.3}[room]||1);
-const custom=n('customSun')*n('customIns')*n('customClimate')*n('customRoom')*n('seasonFactor');const adjusted=base*original*custom;const step=Math.max(1,n('roundStep'));const rounded=Math.round(adjusted/step)*step;const sizes=cool?[5000,6000,8000,10000,12000,14000,18000,24000,30000,36000]:[5000,10000,15000,20000,30000,40000,60000];const nominal=sizes.find(x=>x>=rounded)||rounded;const dt=num('outTemp')!==null&&num('inTemp')!==null?num('outTemp')-num('inTemp'):null;
-const components=[];const missing=[];const has=id=>num(id)!==null;const delta=dt===null?null:Math.abs(dt);for(const [label,areaId,uId] of [['Muros','wallArea','wallU'],['Ventanas','windowArea','windowU'],['Techo','roofArea','roofU']]){if(delta!==null&&has(areaId)&&has(uId)){const watts=n(areaId)*n(uId)*delta;components.push([label,watts])}else missing.push(label+' (ΔT, área o U)')}
-if(has('windowArea')&&has('shgc')&&has('irradiance'))components.push(['Radiación solar',n('windowArea')*n('shgc')*n('irradiance')]);else missing.push('Radiación solar (área de vidrio, SHGC e irradiancia)');
-if(delta!==null&&has('ach')){const volume=area*(unit==='m'?1:0.09290304)*(hft*.3048);components.push(['Infiltración sensible',.33*(volume*n('ach'))*delta])}else missing.push('Infiltración (ΔT y ACH)');
-if(delta!==null&&has('vent'))components.push(['Ventilación sensible',1.2*n('vent')*delta]);else missing.push('Ventilación (ΔT y caudal)');
-if(has('watts'))components.push(['Equipos e iluminación',n('watts')]);else missing.push('Equipos e iluminación');
-const partialW=components.reduce((a,b)=>a+b[1],0);return {area,sqft,hft,height,base,original,custom,adjusted,rounded,nominal,dt,components,missing,partialW,cool}}
-function render(){const c=compute();lastCalc=c;const present=c.area>0;const show=v=>present?fmt(v):'—';$('preview').textContent=present?fmt(c.rounded)+' BTU/h':'—';$('btu').textContent=show(c.rounded);$('tons').textContent=present?(c.rounded/12000).toFixed(2):'—';$('kw').textContent=present?fmt(c.rounded*.000293071)+' kW':'—';$('nominal').textContent=present?fmt(c.nominal)+' BTU/h':'—';$('delta').textContent=c.dt===null?'—':fmt(Math.abs(c.dt))+' °C';const max=Math.max(c.base,c.adjusted,c.nominal,1);[['barBase',c.base],['barAdjusted',c.adjusted],['barNominal',c.nominal]].forEach(([id,v])=>$(id).style.height=(present?Math.max(2,v/max*95):2)+'%');
-const lines=[['Área',fmt(c.sqft)+' ft²'],['Altura usada',fmt(c.hft)+' ft'],['Factor de altura',fmt(c.height)],['Carga base',fmt(c.base)+' BTU/h'],['Factores originales',fmt(c.original)],['Factores adicionales y estación',fmt(c.custom)],['Carga ajustada',fmt(c.adjusted)+' BTU/h'],['Intervalo de redondeo',fmt(n('roundStep'))+' BTU/h'],['Resultado redondeado',fmt(c.rounded)+' BTU/h'],['Temporada',fields.season.selectedOptions[0].text],['ΔT exterior - interior',c.dt===null?'Sin datos':fmt(c.dt)+' °C (solo modelo físico)']];$('trace').replaceChildren(...lines.map(([k,v])=>{let row=document.createElement('div');row.className='line';const a=document.createElement('span');a.textContent=k;const b=document.createElement('strong');b.textContent=v;row.append(a,b);return row}));
-const phys=$('physics');phys.replaceChildren();for(const [label,watts] of c.components){let p=document.createElement('div');p.className='line';p.textContent=label+' · '+fmt(watts)+' W ('+fmt(watts*3.412142)+' BTU/h)';phys.append(p)}const p=document.createElement('p');p.className='info';p.textContent='Suma parcial de componentes conocidos: '+fmt(c.partialW)+' W / '+fmt(c.partialW*3.412142)+' BTU/h. Faltan: '+c.missing.join('; ')+'. No incluye necesariamente cargas latentes, horarios, sombras ni diversidad.';phys.append(p);
-const essential=['mode','room','units','floor','h','ppl','win','sun','ins','clim','season','outTemp','inTemp'];const count=essential.filter(id=>fields[id].value!=='').length,pct=Math.round(count/essential.length*100);$('progressText').textContent=pct+'% · '+count+'/'+essential.length;$('progressFill').style.width=pct+'%';$('progressTrack').setAttribute('aria-valuenow',pct);$('steps').replaceChildren();for(const [name,id] of [['Proyecto','mode'],['Área','floor'],['Ocupantes','ppl'],['Temporada','season'],['Temperaturas','outTemp'],['Resultados','results']]){let b=document.createElement('button');b.textContent=name;b.className=id==='results'||fields[id].value!==''?'done':'';b.onclick=()=>{if(id==='results'){showTab('results');$('btu').scrollIntoView({block:'center'})}else{showTab(fields[id].closest('section').id);fields[id].scrollIntoView({block:'center'});fields[id].focus()}};$('steps').append(b)}return c}
-function snapshot(){return Object.fromEntries(Object.entries(fields).map(([id,el])=>[id,el.value]))}
-function persist(){if(updating)return;render();try{localStorage.setItem('btu-autosave-v3',JSON.stringify({version:3,values:snapshot(),updated:new Date().toISOString()}));$('status').textContent='✓ Guardado automáticamente en este navegador'}catch(e){$('status').textContent='⚠ No se pudo guardar; exporta tu proyecto'}}
-function restore(values){if(!values||typeof values!=='object')throw Error('Formato inválido');updating=true;for(const [id,el] of Object.entries(fields))if(Object.hasOwn(values,id)&&typeof values[id]!=='object')el.value=String(values[id]).slice(0,3000);lastUnit=fields.units.value;updating=false;render();persist()}
-function exportJSON(){const data={format:'BTU-Studio-v3',exportedAt:new Date().toISOString(),values:snapshot(),calculation:lastCalc,notice:'Estimación educativa, no Manual J'};const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='BTU-Studio-'+(fields.project.value||'proyecto').replace(/[^a-z0-9áéíóúñ_-]/gi,'_')+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1500)}
-function readProjects(){try{return JSON.parse(localStorage.getItem('btu-projects-v3')||'{}')}catch(e){return {}}}
-function listProjects(){const projects=readProjects(),sel=$('projectSelect'),chosen=sel.value;sel.replaceChildren();for(const [id,item] of Object.entries(projects)){const o=document.createElement('option');o.value=id;o.textContent=item.name+' · '+new Date(item.savedAt).toLocaleDateString('es-MX');sel.append(o)}if(projects[chosen])sel.value=chosen;$('projectCount').textContent=Object.keys(projects).length+' proyecto(s) guardado(s) en este navegador.'}
-$('saveNamed').onclick=()=>{const projects=readProjects(),id=fields.project.value.trim()||'Proyecto nuevo';projects[id]={name:id,savedAt:new Date().toISOString(),values:snapshot()};try{localStorage.setItem('btu-projects-v3',JSON.stringify(projects));listProjects();$('projectSelect').value=id;$('status').textContent='✓ Proyecto guardado: '+id}catch(e){alert('Sin espacio de almacenamiento; exporta un archivo JSON')}};
-$('openNamed').onclick=()=>{const item=readProjects()[$('projectSelect').value];if(item)restore(item.values)};
-$('deleteNamed').onclick=()=>{const id=$('projectSelect').value;if(!id||!confirm('¿Eliminar el proyecto '+id+' de este navegador?'))return;const p=readProjects();delete p[id];localStorage.setItem('btu-projects-v3',JSON.stringify(p));listProjects()};
-$('newProject').onclick=()=>{if(!confirm('¿Crear nuevo proyecto? Exporta el actual si necesitas conservarlo.'))return;restore(defaults);showTab('assessment')};
-$('save').onclick=()=>{$('saveNamed').click()};$('export').onclick=exportJSON;$('import').onclick=()=>$('importFile').click();$('importFile').onchange=async e=>{const file=e.target.files[0];if(!file)return;try{const data=JSON.parse(await file.text());restore(data.values||data.inputs||data);alert('Archivo importado; revisa los resultados')}catch(err){alert('No se pudo importar: '+err.message)}e.target.value=''};$('print').onclick=()=>window.print();
-for(const [id,cls] of [['contrast','contrast'],['large','large'],['reduced','reduced']]){const el=$(id);try{el.checked=localStorage.getItem('btu-access-'+id)==='true'}catch(e){}document.body.classList.toggle(cls,el.checked);el.onchange=()=>{document.body.classList.toggle(cls,el.checked);try{localStorage.setItem('btu-access-'+id,String(el.checked))}catch(e){}}}
-for(const [id,el] of Object.entries(fields))el.addEventListener('input',()=>{if(updating)return;if(id==='units'){const k=lastUnit==='m'?3.280839895:1/3.280839895;for(const key of ['len','wid','h'])if(fields[key].value!=='')fields[key].value=String(+(Number(fields[key].value)*k).toFixed(5));if(fields.floor.value!=='')fields.floor.value=String(+(Number(fields.floor.value)*k*k).toFixed(5));lastUnit=fields.units.value}
-if(id==='len'||id==='wid'){if(n('len')>0&&n('wid')>0)fields.floor.value=String(+(n('len')*n('wid')).toFixed(4))}
-$('areaHint').textContent=n('len')>0&&n('wid')>0?'✓ Área vinculada a largo × ancho. Puedes corregir el área manualmente.':'Área especificada directamente o pendiente.';persist()});
-try{const old=JSON.parse(localStorage.getItem('btu-autosave-v3')||'null');if(old?.values)restore(old.values);else{const legacy=JSON.parse(localStorage.getItem('btu-studio-project-v2')||'null');if(legacy?.values)restore(legacy.values);else{const v1=JSON.parse(localStorage.getItem('btu-studio-v1')||'null');if(v1)restore(v1)}}}catch(e){}
-updateLesson();listProjects();persist();if('serviceWorker' in navigator)navigator.serviceWorker.register('./sw.js').catch(()=>{});
-</script></body></html>
+const el=id=>document.getElementById(id);
+const inputIds=['seasonTo','seasonTf','referenceTemp','alphaWall','alphaRoof','alphaFloor','wetWall','wetRoof','wetFloor','mode','L','W','H','Ti','To','margin','Uw','Ur','Uf','Tf','wallType','roofType','floorType','mass','Tp','cp','hours','ach','airhours','motors','lights','people','personW','other','blockArea','blockDelta','blockR','blockRsi','blockRse','studioSeason','studioMonth','studioLocation','studioProjectType'];
+const core=['seasonTo','seasonTf','L','W','H','Ti','To','Uw','Ur','Uf','mass','Tp','cp','hours','ach','airhours','motors','lights','people','personW','other'];
+const panels=Array.from(document.querySelectorAll('section.panel'));
+const nav=el('studioNav');
+const names=panels.map((p,i)=>{const h=p.querySelector('h2');return h?h.textContent.replace(/^\d+\s*[·.\-]\s*/,'').trim().slice(0,32):'Sección '+(i+1)});
+panels.forEach((panel,i)=>{if(!panel.id)panel.id='studioSection'+i;const b=document.createElement('button');b.type='button';b.textContent=(i+1).toString().padStart(2,'0')+' · '+(names[i]||'Sección');b.addEventListener('click',()=>panel.scrollIntoView({behavior:document.body.classList.contains('studio-reduced')?'auto':'smooth',block:'start'}));nav.append(b);const option=new Option((i+1)+'. '+names[i],panel.id);el('studioNavSelect').add(option)});el('studioNavSelect').addEventListener('change',e=>document.getElementById(e.target.value)?.scrollIntoView({behavior:'smooth',block:'start'}));
+function values(){return Object.fromEntries(inputIds.filter(id=>el(id)).map(id=>[id,el(id).value]))}
+function setValues(data){if(!data||typeof data!=='object')throw Error('Formato de proyecto no válido');for(const id of inputIds){if(el(id)&&Object.prototype.hasOwnProperty.call(data,id)&&typeof data[id]!=='object')el(id).value=String(data[id]).slice(0,1000)}if(typeof setMode==='function')setMode();if(typeof calculate==='function')calculate();if(typeof calcBlockRule==='function')calcBlockRule();refresh()}
+function getProjects(){try{return JSON.parse(localStorage.getItem('btu-v6-projects')||'{}')}catch{return {}}}
+function updateList(){const list=el('studioProjectList'),projects=getProjects(),old=list.value;list.replaceChildren(new Option('Seleccionar proyecto',''));Object.keys(projects).sort().forEach(k=>list.add(new Option(k,k)));if(projects[old])list.value=old}
+function save(){const name=el('studioProjectName').value.trim()||'Proyecto '+new Date().toLocaleDateString('es-MX');const projects=getProjects();projects[name]={saved:new Date().toISOString(),values:values()};try{localStorage.setItem('btu-v6-projects',JSON.stringify(projects));updateList();el('studioProjectList').value=name;el('studioStatus').textContent='✓ Proyecto "'+name+'" guardado en este navegador.'}catch{el('studioStatus').textContent='No se pudo guardar. Exporta JSON como respaldo.'}}
+el('studioSave').addEventListener('click',save);
+el('studioLoad').addEventListener('click',()=>{const p=getProjects()[el('studioProjectList').value];if(p)setValues(p.values)});
+el('studioDelete').addEventListener('click',()=>{const name=el('studioProjectList').value;if(!name||!confirm('¿Eliminar el proyecto '+name+'?'))return;const p=getProjects();delete p[name];localStorage.setItem('btu-v6-projects',JSON.stringify(p));updateList()});
+el('studioExport').addEventListener('click',()=>{const data={format:'BTU-Studio-v6',saved:new Date().toISOString(),projectName:el('studioProjectName').value,values:values(),note:'Cálculo educativo de refrigeración; no sustituye un diseño profesional.'};const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='BTU-Studio-v6-'+new Date().toISOString().slice(0,10)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),2000)});
+el('studioImport').addEventListener('click',()=>el('studioFile').click());
+el('studioFile').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;try{const data=JSON.parse(await file.text());if(!data.values)throw Error('Faltan variables del proyecto');setValues(data.values);el('studioProjectName').value=data.projectName||file.name;el('studioStatus').textContent='✓ Importación completa; revisa las variables.'}catch(err){alert('No se pudo importar: '+err.message)}e.target.value=''});
+el('studioPrint').addEventListener('click',()=>window.print());
+for(const [id,cls] of [['studioContrast','studio-contrast'],['studioLarge','studio-large'],['studioReduced','studio-reduced']]){const input=el(id);try{input.checked=localStorage.getItem('btu-pref-'+id)==='true'}catch{}document.documentElement.classList.toggle(cls,input.checked);document.body.classList.toggle(cls,input.checked);input.addEventListener('change',()=>{document.documentElement.classList.toggle(cls,input.checked);document.body.classList.toggle(cls,input.checked);try{localStorage.setItem('btu-pref-'+id,String(input.checked))}catch{}})}
+let scheduled;
+function refresh(){const n=id=>Number(el(id)?.value)||0;const count=core.filter(id=>el(id)?.value!=='').length,pct=Math.round(100*count/core.length);el('studioProgressText').textContent=pct+'% · '+count+'/'+core.length+' variables';el('studioProgressFill').style.width=pct+'%';el('studioProgress').setAttribute('aria-valuenow',pct);el('studioDimL').textContent='L: '+n('L')+' m';el('studioDimW').textContent='A: '+n('W')+' m';el('studioDimH').textContent='H: '+n('H')+' m';el('studioVolume').textContent='Volumen: '+(n('L')*n('W')*n('H')).toLocaleString('es-MX',{maximumFractionDigits:2})+' m³';el('studioTiText').textContent='Interior '+n('Ti')+' °C';el('studioToText').textContent='Exterior '+n('To')+' °C';el('studioDeltaText').textContent='ΔT = '+(n('To')-n('Ti')).toLocaleString('es-MX')+' °C';el('studioSeasonText').textContent='Temporada: '+el('studioSeason').value;el('studioTempBar').setAttribute('width',Math.max(0,Math.min(356,178+(n('To')-n('Ti'))*2)));clearTimeout(scheduled);scheduled=setTimeout(()=>{try{localStorage.setItem('btu-v6-autosave',JSON.stringify(values()))}catch{}},180)}
+document.querySelectorAll('input,select').forEach(e=>e.addEventListener('input',refresh));
+const seasonIds=['seasonTo','seasonTf','referenceTemp','alphaWall','alphaRoof','alphaFloor','wetWall','wetRoof','wetFloor'];
+function seasonProfiles(){try{return JSON.parse(localStorage.getItem('btu-v6-season-profiles')||'{}')}catch{return {}}}
+function loadSeasonProfile(){const key=el('studioSeason').value,profile=seasonProfiles()[key];if(profile){seasonIds.forEach(id=>{if(Object.prototype.hasOwnProperty.call(profile,id))el(id).value=profile[id]});el('seasonProfileStatus').textContent='✓ Condiciones recuperadas para '+key}else{el('seasonTo').value='';el('seasonTf').value='';['alphaWall','alphaRoof','alphaFloor'].forEach(id=>el(id).value='0');['wetWall','wetRoof','wetFloor'].forEach(id=>el(id).value='1');el('seasonProfileStatus').textContent='No hay condiciones guardadas para '+key+'. Se usan las temperaturas principales.'}calculate();refresh()}
+el('saveSeasonProfile').addEventListener('click',()=>{const p=seasonProfiles();p[el('studioSeason').value]=Object.fromEntries(seasonIds.map(id=>[id,el(id).value]));try{localStorage.setItem('btu-v6-season-profiles',JSON.stringify(p));el('seasonProfileStatus').textContent='✓ Condiciones guardadas para '+el('studioSeason').value}catch{el('seasonProfileStatus').textContent='No se pudo guardar; exporta el proyecto'}});
+el('clearSeasonProfile').addEventListener('click',()=>{const p=seasonProfiles();delete p[el('studioSeason').value];localStorage.setItem('btu-v6-season-profiles',JSON.stringify(p));loadSeasonProfile()});
+el('studioSeason').addEventListener('change',loadSeasonProfile);
+seasonIds.forEach(id=>el(id)?.addEventListener('input',()=>{calculate();refresh()}));
+
+
+document.querySelectorAll('button').forEach(e=>e.addEventListener('click',()=>setTimeout(refresh,0)));
+try{const saved=JSON.parse(localStorage.getItem('btu-v6-autosave')||'null');if(saved)setValues(saved)}catch{}
+if('IntersectionObserver'in window){const buttons=Array.from(nav.children);const observer=new IntersectionObserver(entries=>{const visible=entries.filter(x=>x.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];if(!visible)return;const i=panels.indexOf(visible.target);buttons.forEach((b,j)=>b.classList.toggle('active',i===j));el('studioNavSelect').value=visible.target.id},{rootMargin:'-25% 0px -60% 0px',threshold:[0,.2,.5]});panels.forEach(p=>observer.observe(p))}
+updateList();refresh();
+if('serviceWorker'in navigator && location.protocol.startsWith('http'))navigator.serviceWorker.register('./sw.js').catch(()=>{});
+})();
+</script>
+</body></html>
