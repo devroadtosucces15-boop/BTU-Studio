@@ -19,6 +19,6 @@ let fails = 0; const check = (ok, m) => { console.log(ok ? '✓' : '✗', m); if
   check(missing.length === 0, 'all page resources precached' + (missing.length ? ' — missing: ' + missing : ''));
   await ctx.setOffline(true);
   await page.reload();
-  check(await page.evaluate(() => !!document.getElementById('out') && document.getElementById('btu-feedback-launch') !== null), 'offline reload renders app + feedback');
+  check(await page.evaluate(() => !!document.getElementById('out') && document.getElementById('appReports') !== null), 'offline reload renders app + feedback');
   await b.close(); srv.close(); process.exitCode = fails ? 1 : 0;
 })();

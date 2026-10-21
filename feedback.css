@@ -30,3 +30,21 @@
 #btu-feedback-bar,#btu-feedback-panel{pointer-events:auto}
 #btu-feedback-panel .btu-report a{display:inline-flex;align-items:center;min-height:32px;margin-right:6px;margin-top:6px;padding:0 10px;border-radius:8px;background:#484746;color:#fff;font-size:12px;font-weight:700;text-decoration:none}
 #btu-feedback-bar button.btu-primary{background:#e3d7b5;color:#242321}
+
+/* ── Graphite theme v2: calmer surfaces, amber accent, no blue/glow ── */
+#btu-feedback-layer{background:#17191B66}
+#btu-feedback-bar{background:#242628;border:0;box-shadow:none;border-radius:16px}
+#btu-feedback-bar button{background:#2C2F31;color:#ECEAE4;border-radius:10px}
+#btu-feedback-bar button[aria-pressed="true"]{background:#E2C276;color:#1B1A17}
+#btu-feedback-bar button:last-child{background:#2C2F31;color:#C98A7A}
+#btu-feedback-panel{background:#242628;border:0;box-shadow:0 -8px 30px #0007;border-radius:20px}
+#btu-feedback-panel input,#btu-feedback-panel textarea,#btu-feedback-panel select{background:#303336;border:1px solid transparent}
+#btu-feedback-panel input:focus,#btu-feedback-panel textarea:focus,#btu-feedback-panel select:focus{border-color:#E2C276;outline:0}
+#btu-feedback-panel .btu-actions button,#btu-feedback-panel .btu-actions a,#btu-feedback-panel .btu-report a{background:#2C2F31}
+#btu-feedback-panel .btu-actions .btu-primary,#btu-feedback-bar .btu-primary{background:#E2C276;color:#1B1A17}
+#btu-feedback-panel .btu-report{background:#2C2F31;border-radius:14px}
+#btu-feedback-panel .btu-report button{background:#383B3E}
+.btu-chip{display:inline-block;padding:4px 11px;border-radius:999px;font-size:12px;font-weight:700;background:#383B3E;color:#C9C7C0}
+.btu-chip-open{background:#3A3322;color:#E2C276}
+.btu-chip-ok{background:#26342B;color:#8FB89A}
+.btu-chip-pending{background:#383B3E;color:#C9C7C0}

@@ -12,7 +12,7 @@ const check = (ok, msg) => { console.log(ok ? '✓' : '✗', msg); if (!ok) fail
   await page.evaluate(() => { localStorage.setItem('btu-v6-autosave', '{"L":"11"}'); localStorage.setItem('btu-v6-projects', '{"p":{}}'); });
   const layerCaptures = () => page.evaluate(() => { const l = document.getElementById('btu-feedback-layer'); const cs = getComputedStyle(l); return cs.display !== 'none' && cs.pointerEvents !== 'none'; });
   check(!(await layerCaptures()), 'idle: no capture layer');
-  await page.tap('#btu-feedback-launch');
+  await page.tap('#appReports');
   check(!(await layerCaptures()), 'menu: capture layer inactive (no invisible overlay)');
   check(await page.evaluate(() => !!document.elementFromPoint(200, 400) && document.elementFromPoint(200, 400).closest('#btu-feedback-mask') === null), 'menu: taps reach the page underneath');
   await page.tap('text=Mis reportes');
@@ -44,7 +44,7 @@ const check = (ok, msg) => { console.log(ok ? '✓' : '✗', msg); if (!ok) fail
   check(await page.evaluate(() => document.getElementById('btu-feedback-panel').contains(document.activeElement)), 'Tab stays inside dialog');
   await page.keyboard.press('Escape');
   check(await page.evaluate(() => getComputedStyle(document.getElementById('btu-feedback-mask')).display === 'none' && !document.querySelector('[inert]')), 'Escape closes and removes inert');
-  check(await page.evaluate(() => document.activeElement.id === 'btu-feedback-launch'), 'focus restored to launcher');
+  check(await page.evaluate(() => document.activeElement.id === 'appReports'), 'focus restored to launcher');
   check(await page.evaluate(() => localStorage.getItem('btu-v6-projects') === '{"p":{}}' && localStorage.getItem('btu-v6-autosave') !== null), 'feedback leaves btu-v6-projects / autosave untouched (autosave is rewritten only by the app itself)');
   // long description trimmed
   check(errs.length === 0, 'no page errors ' + errs.join(' | '));

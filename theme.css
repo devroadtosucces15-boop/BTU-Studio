@@ -1,0 +1,78 @@
+/* BTU Studio — graphite theme v2 (presentation layer only; no calculation logic).
+   Tokens first, then app shell, steps, cards, forms, results. Loaded after the inline v6 styles. */
+:root:not(.studio-contrast){--bg:#17191B;--surface:#242628;--raised:#2C2F31;--input:#303336;--text:#ECEAE4;--muted:#A9A7A0;--accent:#E2C276;--edge:#3A3D40;--ok:#8FB89A;--danger:#C98A7A;--on-accent:#1B1A17}
+:root.studio-contrast{--ok:#fff;--danger:#fff;--on-accent:#000}
+html{scroll-padding-top:150px}
+body{width:100%;max-width:none;margin:0;padding:0 0 calc(40px + env(safe-area-inset-bottom));background:var(--bg)}
+h1{font-size:clamp(1.5rem,5vw,2.2rem);letter-spacing:-.03em;margin:0 0 8px}
+h2{font-size:clamp(1.1rem,3.4vw,1.35rem);font-weight:700}
+
+/* ── App shell ─────────────────────────────── */
+.app-top{position:sticky;top:0;z-index:60;background:var(--bg);padding-top:env(safe-area-inset-top)}
+.app-header{display:grid;grid-template-columns:48px minmax(0,1fr) auto;align-items:center;gap:8px;max-width:880px;margin:0 auto;padding:10px clamp(12px,3vw,24px) 6px}
+.app-title{text-align:center;line-height:1.15}.app-title b{display:block;font-size:1.15rem;font-weight:800;letter-spacing:.16em}.app-title span{display:block;margin-top:3px;font-size:.6rem;letter-spacing:.2em;color:var(--muted);font-weight:600}
+.app-tools{display:flex;gap:2px}
+.app-icon{position:relative;width:44px;min-height:44px;padding:0;background:transparent;border-radius:12px;color:var(--text)}
+.app-icon:hover{background:var(--surface)}.app-icon svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.app-badge{position:absolute;top:5px;right:4px;min-width:17px;height:17px;padding:0 4px;border-radius:9px;background:var(--accent);color:var(--on-accent);font-family:inherit;font-weight:700;font-size:.65rem;line-height:17px;font-style:normal;text-align:center}
+.app-steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));max-width:880px;margin:0 auto;padding:4px clamp(6px,2vw,20px) 8px;gap:2px}
+.app-steps button{flex-direction:column;gap:6px;min-height:58px;padding:6px 2px;background:transparent;border-radius:12px;color:var(--muted);font-size:.68rem;font-weight:600;line-height:1.15}
+.app-steps button i{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--surface);font-family:inherit;font-weight:700;font-size:.85rem;line-height:1;font-style:normal;color:var(--muted);font-variant-numeric:tabular-nums}
+.app-steps button[aria-current=step]{color:var(--text);background:var(--surface)}
+.app-steps button[aria-current=step] i{background:var(--accent);color:var(--on-accent)}
+.app-steps button.done i{color:var(--accent)}
+.app-summary{max-width:880px;margin:0 auto;padding:0 clamp(12px,3vw,24px) 8px;font-size:.8rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 14px}
+.app-summary b{color:var(--text);font-variant-numeric:tabular-nums}.app-summary em{font-style:normal;color:var(--accent);font-weight:700}
+.app-drawer{max-width:880px;margin:0 auto;padding:12px clamp(12px,3vw,24px) 4px;background:var(--bg)}
+.app-drawer:not([hidden]){display:block}
+main#app-main{max-width:880px;margin:0 auto;padding:6px clamp(12px,3vw,24px) 0}
+.studio-nav-wrap{display:none!important}
+#btu-feedback-launch{display:none!important}
+
+/* ── Cards ─────────────────────────────────── */
+.panel{background:var(--surface);border-radius:20px;padding:clamp(16px,3.4vw,26px);margin:14px 0}
+.panel .panel{background:var(--raised);border-radius:14px}
+.material-card,.metric,.studio-viz{background:var(--raised);border-radius:14px}
+.studio-viz h3{margin:0 0 10px;font-size:.92rem;color:var(--muted);font-weight:650}
+.studio-viz svg{display:block;width:100%;height:auto;max-height:260px}
+.studio-intro{padding:10px 0 2px}.studio-intro .sub{font-size:.95rem;color:var(--muted)}
+.studio-head{margin:6px 0 12px}.studio-tag{background:var(--surface);color:var(--muted);font-weight:600}
+.studio-progress{background:var(--surface);border-radius:14px;margin:10px 0}
+.studio-progress-track{background:var(--raised)}.studio-progress-fill{background:var(--accent)!important}
+.studio-dashboard{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:12px;margin:12px 0}
+@media(max-width:700px){.studio-dashboard{grid-template-columns:minmax(0,1fr)}}
+.studio-mini{font-variant-numeric:tabular-nums}
+#studioVolume{margin:8px 0 0;color:var(--text);font-weight:700}
+
+/* ── Forms & buttons ───────────────────────── */
+input,select,textarea{background:var(--input);border:1px solid transparent;border-radius:12px;min-height:48px;color:var(--text)}
+input:focus,select:focus,textarea:focus{border-color:var(--accent)}
+input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible,summary:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+label{color:var(--muted);font-weight:600;font-size:.8rem}
+button{background:var(--raised);border-radius:12px;color:var(--text)}button:hover{background:#383B3E}
+button.primary,.btu-primary{background:var(--accent)!important;color:var(--on-accent)!important}button.primary:hover{background:#ECD08C}
+button.secondary{background:var(--raised)}
+.studio-toolbar label,.studio-actions input,.studio-actions select{background:var(--surface)}
+.studio-toolbar{grid-template-columns:repeat(3,minmax(0,1fr))}
+.studio-toolbar button,.studio-actions button{background:var(--surface)}
+.studio-toolbar #studioSave{background:var(--accent);color:var(--on-accent)}
+@media(max-width:480px){.studio-toolbar{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.examplebuttons{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.note{background:#2B2922;border-left:3px solid var(--accent);color:#EADFC4}.good{background:#252C28;border-left:3px solid var(--ok);color:#DCE8DF}
+details{border-top:1px solid var(--edge)}summary{color:var(--text)}
+code{background:var(--raised)}
+.result{color:var(--text);font-weight:800}
+.metric span{color:var(--muted)}
+.chartrows .bar,.chartrow .bar{background:var(--accent)!important;border-radius:6px}.chartrow .track{background:var(--raised);border-radius:6px}
+
+/* ── Chamber + temperature graphics (classes set in theme.js / markup) ── */
+.iso-top{fill:#4A4E52;stroke:#8B8E91}.iso-left{fill:#383B3E;stroke:#8B8E91}.iso-right{fill:#2E3134;stroke:#8B8E91}
+.iso-floor{fill:#1E2022}.iso-door{fill:#4A4E52;stroke:#8B8E91}.iso-line{stroke:#8B8E91;fill:none}
+.iso-dim{stroke:var(--accent);fill:none;stroke-width:1.4}.iso-svg text{fill:var(--text);font:600 13px system-ui,sans-serif}
+.temp-track{fill:var(--input)}.temp-bar{fill:var(--accent)}.temp-dot{fill:var(--accent);stroke:var(--bg);stroke-width:3}.temp-svg text{fill:var(--text);font:600 15px system-ui,sans-serif}
+
+/* ── Step pager ────────────────────────────── */
+.step-pager{display:flex;gap:10px;margin:18px 0 6px}.step-pager button{flex:1 1 0;min-height:50px;font-size:.95rem}
+.step-pager button:only-child{flex-basis:100%}
+@media screen{.step-off{display:none!important}}
+@media print{.app-top,.app-drawer,.step-pager{display:none!important}}

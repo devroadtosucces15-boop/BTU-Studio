@@ -5,7 +5,7 @@ const parse = s => Number(s.replace(/,/g, ''));
 (async () => {
   const b = await launch(), page = await b.newPage({ locale: 'es-MX' });
   await page.goto(URL);
-  const txt = await page.evaluate(() => document.getElementById('out').innerText);
+  const txt = await page.evaluate(() => { document.querySelectorAll('.step-off').forEach(e => e.classList.remove('step-off')); return document.getElementById('out').innerText; });
   const L=10,W=8,H=4,Ti=2,To=35,Tf=20, V=L*W*H, wall=2*(L+W)*H, A=L*W;
   const qT=(.35*wall*(To-Ti)+.25*A*(To-Ti)+.3*A*(Tf-Ti))/1000;
   const qP=5000*3.8*(20-Ti)/(3600*18);
