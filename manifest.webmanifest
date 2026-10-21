@@ -1,1 +1,29 @@
-{"name":"BTU Studio","short_name":"BTU Studio","lang":"es-MX","start_url":"./","scope":"./","display":"standalone","background_color":"#222224","theme_color":"#222224","icons":[{"src":"./icon.svg","sizes":"any","type":"image/svg+xml"}]}
+{
+  "name": "BTU Studio · Laboratorio térmico",
+  "short_name": "BTU Studio",
+  "lang": "es-MX",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#1c1c1d",
+  "theme_color": "#1c1c1d",
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
