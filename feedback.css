@@ -28,3 +28,5 @@
 @media print{#btu-feedback-launch,#btu-feedback-mask,#btu-feedback-panel{display:none!important}}
 
 #btu-feedback-bar,#btu-feedback-panel{pointer-events:auto}
+#btu-feedback-panel .btu-report a{display:inline-flex;align-items:center;min-height:32px;margin-right:6px;margin-top:6px;padding:0 10px;border-radius:8px;background:#484746;color:#fff;font-size:12px;font-weight:700;text-decoration:none}
+#btu-feedback-bar button.btu-primary{background:#e3d7b5;color:#242321}
