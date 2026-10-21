@@ -76,3 +76,13 @@ code{background:var(--raised)}
 .step-pager button:only-child{flex-basis:100%}
 @media screen{.step-off{display:none!important}}
 @media print{.app-top,.app-drawer,.step-pager{display:none!important}}
+
+/* ── Clima del sitio ──────────────────────── */
+.clim-search{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:8px}
+@media(max-width:520px){.clim-search{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.clim-search input{grid-column:1/-1}}
+.clim-results{display:grid;gap:6px;margin-top:8px}.clim-results button{justify-content:flex-start;text-align:left;background:var(--raised)}
+#climStatus[data-tone=warn]{color:var(--danger)}
+.clim-card{margin-top:12px;padding:16px;border-radius:14px;background:var(--raised);display:grid;gap:12px}
+.clim-card h3{margin:0}.clim-row{display:grid;gap:3px}.clim-row span{color:var(--muted);font-size:.8rem;font-weight:600}.clim-row b{font-size:1.5rem;font-variant-numeric:tabular-nums}.clim-row small,.clim-meta{color:var(--muted);font-size:.78rem;line-height:1.5}
+.clim-card button{background:var(--input)}.clim-card .primary{background:var(--accent);color:var(--on-accent)}
+.clim-meta{margin:10px 0 0}.clim-meta a{color:var(--accent)}
