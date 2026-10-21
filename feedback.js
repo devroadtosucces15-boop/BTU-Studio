@@ -5,7 +5,7 @@ const KEY='btu-studio-feedback-v1', REPO='https://github.com/devroadtosucces15-b
 const el=(tag,cls,text)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n};
 const set=(node,attrs)=>{Object.entries(attrs).forEach(([k,v])=>node.setAttribute(k,v));return node};
 const load=()=>{try{const v=JSON.parse(localStorage.getItem(KEY)||'[]');return Array.isArray(v)?v:[]}catch{return []}};
-const save=v=>{try{localStorage.setItem(KEY,JSON.stringify(v));return true}catch{return false}};
+const save=v=>{try{localStorage.setItem(KEY,JSON.stringify(v));document.dispatchEvent(new CustomEvent('btu-feedback-change'));return true}catch{return false}};
 const launch=set(el('button',null,'✎  Reportar / anotar'),{id:'btu-feedback-launch',type:'button','aria-label':'Anotar una sección o revisar reportes','aria-haspopup':'dialog'});
 const mask=set(el('div'),{id:'btu-feedback-mask'});
 const layer=set(el('div'),{id:'btu-feedback-layer','aria-hidden':'true'});
@@ -88,6 +88,8 @@ function issueLink(r){
 
 /* Status vocabulary. Opening the GitHub form cannot prove an issue was created, so it is never reported as "sent". */
 const STATUS={pending:'Pendiente de envío',opened:'Borrador abierto en GitHub (envío sin confirmar)',sent:'Enviado a GitHub (confirmado por ti)',resolved:'Resuelto localmente'};
+/* Short label + tone for the status chip; the full honest status text stays visible next to it. */
+function chipFor(s){if(s===STATUS.resolved)return['Resuelto','ok'];if(s===STATUS.sent)return['Enviado','ok'];if(s===STATUS.opened||s==='Enlace de envío abierto')return['Abierto','open'];return['Pendiente','pending']}
 const isSent=r=>r.status===STATUS.sent;
 function patch(id,fn){const items=load();const it=items.find(x=>x.id===id);if(!it)return false;fn(it);return save(items)}
 
@@ -144,6 +146,7 @@ function openList(){
     add(c,'strong',null,r.title);
     add(c,'p',null,r.id+' · '+r.category+' · '+new Date(r.created).toLocaleDateString('es-MX'));
     add(c,'p',null,r.description.slice(0,240));
+    const chip=chipFor(r.status);add(c,'span','btu-chip btu-chip-'+chip[1],chip[0]);
     add(c,'p','btu-muted','Estado: '+r.status);
     const open=add(c,'a',null,'Abrir en GitHub ↗',{href:issueLink(r),target:'_blank',rel:'noopener noreferrer'});
     open.addEventListener('click',()=>{patch(r.id,it=>{if(!isSent(it)&&it.status!==STATUS.resolved)it.status=STATUS.opened})});
@@ -174,4 +177,5 @@ addEventListener('resize',()=>{if(state==='annotate'){mark=null;draw()}});   // 
 mask.append(layer,bar);
 document.body.append(launch,mask);
 setState('idle');
+window.btuFeedback={open:openMenu};
 })();

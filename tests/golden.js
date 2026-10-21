@@ -28,6 +28,7 @@ async function run(page, vals) {
     if (v.__example) loadExample(v.__example);
     for (const [k, x] of Object.entries(v)) if (k !== '__example') set(k, x);
     calculate();
+    document.querySelectorAll('.step-off').forEach(e => e.classList.remove('step-off')); // innerText needs visible steps
     const text = id => document.getElementById(id)?.textContent ?? null;
     return {
       out: document.getElementById('out').innerText.replace(/\s+/g, ' ').trim(),

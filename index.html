@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Calculadora didáctica de carga térmica — versión 6: transferencia por superficies</title>
-<meta name="theme-color" content="#181819"><link rel="manifest" href="./manifest.webmanifest"><link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+<meta name="theme-color" content="#17191B"><link rel="manifest" href="./manifest.webmanifest"><link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="BTU Studio">
 <link rel="icon" href="./icon.svg" type="image/svg+xml">
@@ -26,13 +26,23 @@ input,select,textarea{display:block;width:100%;max-width:100%;min-width:0;min-he
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}@media print{body{background:white;color:black}.studio-nav,.studio-toolbar,.studio-progress,.studio-actions{display:none}.panel,.studio-viz,.metric{background:white;color:black;border:1px solid #ccc}}
 .studio-intro{padding:18px 0 9px}.studio-intro h1{margin:0 0 8px}.studio-intro .sub{font-size:1rem;max-width:65ch}.studio-intro h1::before{display:none}.studio-head{margin:10px 0 18px}.studio-nav-wrap{margin:16px 0}.studio-nav-wrap>label,.studio-nav-wrap>select{display:none}.studio-nav{grid-template-columns:repeat(4,minmax(0,1fr));margin:0}.studio-nav button{font-size:.78rem;line-height:1.4}.studio-progress{margin:14px 0}.studio-viz svg{max-height:200px}
 @media(max-width:800px){.studio-nav{display:none}.studio-nav-wrap>label{display:block}.studio-nav-wrap>select{display:block}.studio-nav-wrap{padding:13px;background:var(--surface);border-radius:13px}.studio-intro{padding:15px 0 6px}.studio-intro h1{font-size:clamp(1.9rem,6vw,2.8rem)}}
-</style><link rel="stylesheet" href="./feedback.css?v=2">
+</style><link rel="stylesheet" href="./feedback.css?v=3"><link rel="stylesheet" href="./theme.css?v=1">
 </head>
 <body>
 <a class="studio-screen-reader" href="#mode">Saltar a la calculadora</a>
-<div class="studio-intro"><h1>Calculadora didáctica de carga térmica</h1>
-<p class="sub">Primero elige cómo vas a trabajar; la calculadora adapta las indicaciones. Estima la carga en <b>kW, BTU/h y toneladas de refrigeración</b>.</p></div>
-<div class="studio-head"><span class="studio-tag">❄ Refrigeración industrial · Calculadora v6 mejorada</span><span class="studio-tag">🔒 Sin cuenta · Datos locales</span></div>
+<div class="app-top">
+<header class="app-header">
+<button type="button" id="appMenu" class="app-icon" aria-label="Archivos, proyectos y accesibilidad" aria-expanded="false" aria-controls="appDrawer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<div class="app-title"><b>BTU STUDIO</b><span>CÁLCULO DE CARGA TÉRMICA</span></div>
+<div class="app-tools">
+<button type="button" id="appProjects" class="app-icon" aria-label="Proyectos guardados"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></button>
+<button type="button" id="appReports" class="app-icon" aria-label="Anotar y ver reportes" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg><i id="appReportsBadge" class="app-badge" hidden>0</i></button>
+</div>
+</header>
+<nav class="app-steps" id="appSteps" aria-label="Pasos del cálculo"></nav>
+<div class="app-summary" id="appSummary" hidden aria-live="polite"></div>
+</div>
+<div class="app-drawer" id="appDrawer" hidden>
 <div class="studio-toolbar" role="group" aria-label="Accesibilidad y archivos">
 <label><input type="checkbox" id="studioContrast"> Alto contraste</label>
 <label><input type="checkbox" id="studioLarge"> Texto grande</label>
@@ -49,14 +59,29 @@ input,select,textarea{display:block;width:100%;max-width:100%;min-width:0;min-he
 <button type="button" id="studioLoad">Abrir</button><button type="button" id="studioDelete">Eliminar</button>
 </div>
 <p id="studioStatus" class="studio-mini" role="status" aria-live="polite">Los valores se guardan automáticamente en este navegador. Exporta JSON para respaldo.</p>
-<div class="studio-nav-wrap"><label for="studioNavSelect">Ir a una sección</label><select id="studioNavSelect" aria-label="Ir a una sección"></select><nav class="studio-nav" id="studioNav" aria-label="Navegación por secciones"></nav></div>
-<div class="studio-progress"><div class="studio-progress-line"><b>◈ Avance de configuración</b><output id="studioProgressText">0%</output></div><div class="studio-progress-track" role="progressbar" aria-label="Campos de cálculo completados" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="studioProgress"><div class="studio-progress-fill" id="studioProgressFill"></div></div></div>
-<div class="studio-dashboard">
-<div class="studio-viz"><h3>Cámara frigorífica · Geometría</h3><svg viewBox="0 0 420 210" role="img" aria-label="Esquema tridimensional de cámara rectangular con largo, ancho y altura"><defs><linearGradient id="room" x2="1" y2="1"><stop stop-color="#66645f"/><stop offset="1" stop-color="#3e3e3d"/></linearGradient></defs><path d="M75 73 236 31 349 79 185 126Z" fill="#585856" stroke="#aaa9a4" stroke-width="2"/><path d="M75 73 185 126 185 189 75 133Z" fill="url(#room)" stroke="#aaa9a4" stroke-width="2"/><path d="M185 126 349 79 349 141 185 189Z" fill="#484847" stroke="#aaa9a4" stroke-width="2"/><path d="M75 133 185 189 349 141" fill="none" stroke="#aaa9a4" stroke-width="2"/><g fill="#e4e2db" font-size="14" font-family="system-ui"><text x="126" y="206" id="studioDimL">Largo</text><text x="278" y="180" id="studioDimW">Ancho</text><text x="20" y="113" id="studioDimH">Altura</text></g></svg><p class="studio-mini" id="studioVolume">Volumen: —</p></div>
-<div class="studio-viz"><h3>Temperaturas de diseño · Comparación</h3><svg viewBox="0 0 420 210" role="img" aria-label="Comparación de temperaturas interior y exterior"><rect x="32" y="55" width="356" height="28" rx="14" fill="#454544"/><rect x="32" y="55" width="170" height="28" rx="14" fill="#b7b4ac" id="studioTempBar"/><circle cx="202" cy="69" r="19" fill="#d4c29f" stroke="#fff" stroke-width="2"/><g font-size="17" fill="#e4e2db" font-family="system-ui"><text x="30" y="32" id="studioTiText">Interior — °C</text><text x="225" y="32" id="studioToText">Exterior — °C</text><text x="30" y="133" id="studioDeltaText">ΔT — °C</text><text x="30" y="167" id="studioSeasonText">Temporada: —</text></g></svg><p class="studio-mini">La temporada documenta el escenario; no inventa ajustes meteorológicos automáticos.</p></div>
 </div>
-
-<section class="panel" id="studioSeasonalPanel">
+<div class="studio-nav-wrap"><label for="studioNavSelect">Ir a una sección</label><select id="studioNavSelect" aria-label="Ir a una sección"></select><nav class="studio-nav" id="studioNav" aria-label="Navegación por secciones"></nav></div>
+<main id="app-main">
+<div data-step="1" class="studio-intro"><h1>Calculadora didáctica de carga térmica</h1>
+<p class="sub">Primero elige cómo vas a trabajar; la calculadora adapta las indicaciones. Estima la carga en <b>kW, BTU/h y toneladas de refrigeración</b>.</p></div>
+<div data-step="1" class="studio-head"><span class="studio-tag">❄ Refrigeración industrial · Calculadora v6 mejorada</span><span class="studio-tag">🔒 Sin cuenta · Datos locales</span></div>
+<div data-step="1" class="studio-progress"><div class="studio-progress-line"><b>◈ Avance de configuración</b><output id="studioProgressText">0%</output></div><div class="studio-progress-track" role="progressbar" aria-label="Campos de cálculo completados" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="studioProgress"><div class="studio-progress-fill" id="studioProgressFill"></div></div></div>
+<section data-step="1" class="panel" id="studioContext"><h2>00 · Escenario y condiciones de diseño</h2><p class="hint">Todos los ajustes de contexto son editables. Las condiciones reales de diseño deben introducirse en las temperaturas y demás variables físicas.</p><div class="studio-extra"><div class="field"><label for="studioSeason">Época del año</label><select id="studioSeason"><option>Primavera</option><option selected>Verano</option><option>Otoño</option><option>Invierno</option><option>Personalizada</option></select></div><div class="field"><label for="studioMonth">Mes de referencia</label><select id="studioMonth"><option value="">No definido</option><option>Enero</option><option>Febrero</option><option>Marzo</option><option>Abril</option><option>Mayo</option><option>Junio</option><option>Julio</option><option>Agosto</option><option>Septiembre</option><option>Octubre</option><option>Noviembre</option><option>Diciembre</option></select></div><div class="field"><label for="studioLocation">Ubicación / estación climática</label><input id="studioLocation" placeholder="Ciudad o instalación"></div><div class="field"><label for="studioProjectType">Tipo de proyecto</label><select id="studioProjectType"><option>Cámara de conservación</option><option>Cámara de congelación</option><option>Almacén refrigerado</option><option>Laboratorio / práctica</option><option>Otro</option></select></div></div></section>
+<section data-step="1" class="panel">
+<h2>Modo de cálculo</h2>
+<div class="grid">
+<div><label for="mode">¿Qué datos tienes?</label>
+<select id="mode" onchange="setMode()">
+<option value="manufacturer">Tengo especificaciones del fabricante</option>
+<option value="experiment" selected>Quiero experimentar / hacer una estimación</option>
+</select></div>
+<div><label>¿Qué cambia?</label><p id="modeSummary" class="hint">Usa valores de ejemplo y cambia una variable a la vez para aprender su efecto.</p></div>
+</div>
+<div id="manufacturerHelp" class="good" hidden><b>Modo fabricante:</b> introduce los valores U de la ficha técnica de paredes, techo y piso, y los datos reales del proceso. Si la ficha da conductividad térmica (λ) en vez de U, no son el mismo valor: convierte con el espesor y las capas o utiliza el valor U certificado del conjunto. La capacidad del compresor debe verificarse por separado con las condiciones de operación y tablas del fabricante.</div>
+<div id="experimentHelp" class="note"><b>Modo experimental:</b> puedes elegir materiales predefinidos con coeficientes U aproximados. Son para aprender, no para certificar el diseño.</div>
+</section>
+<div data-step="1" class="note"><b>Importante:</b> es una herramienta de aprendizaje con simplificaciones. No sustituye un cálculo de diseño: puentes térmicos, infiltración real, humedad, deshielo, embalaje, respiración del producto y condiciones del refrigerante pueden cambiar el resultado.</div>
+<section data-step="1" class="panel" id="studioSeasonalPanel">
 <h2>Compensación térmica por temporada y material</h2>
 <p class="hint">La época del año puede cambiar las condiciones exteriores y la conductividad de algunos materiales. Define los datos reales para tu instalación; no se aplican coeficientes genéricos sin respaldo.</p>
 <div class="studio-extra">
@@ -74,25 +99,11 @@ input,select,textarea{display:block;width:100%;max-width:100%;min-width:0;min-he
 <div class="studio-actions"><button type="button" id="saveSeasonProfile">Guardar condiciones de esta temporada</button><button type="button" id="clearSeasonProfile">Restablecer condiciones de temporada</button></div><p id="seasonProfileStatus" class="studio-mini" role="status">Puedes guardar condiciones distintas para primavera, verano, otoño e invierno en este teléfono.</p>
 <div id="seasonalTrace" class="good" role="status" aria-live="polite">Sin compensación adicional hasta especificar parámetros.</div>
 </section>
-<section class="panel" id="studioContext"><h2>00 · Escenario y condiciones de diseño</h2><p class="hint">Todos los ajustes de contexto son editables. Las condiciones reales de diseño deben introducirse en las temperaturas y demás variables físicas.</p><div class="studio-extra"><div class="field"><label for="studioSeason">Época del año</label><select id="studioSeason"><option>Primavera</option><option selected>Verano</option><option>Otoño</option><option>Invierno</option><option>Personalizada</option></select></div><div class="field"><label for="studioMonth">Mes de referencia</label><select id="studioMonth"><option value="">No definido</option><option>Enero</option><option>Febrero</option><option>Marzo</option><option>Abril</option><option>Mayo</option><option>Junio</option><option>Julio</option><option>Agosto</option><option>Septiembre</option><option>Octubre</option><option>Noviembre</option><option>Diciembre</option></select></div><div class="field"><label for="studioLocation">Ubicación / estación climática</label><input id="studioLocation" placeholder="Ciudad o instalación"></div><div class="field"><label for="studioProjectType">Tipo de proyecto</label><select id="studioProjectType"><option>Cámara de conservación</option><option>Cámara de congelación</option><option>Almacén refrigerado</option><option>Laboratorio / práctica</option><option>Otro</option></select></div></div></section>
-
-
-<section class="panel">
-<h2>Modo de cálculo</h2>
-<div class="grid">
-<div><label for="mode">¿Qué datos tienes?</label>
-<select id="mode" onchange="setMode()">
-<option value="manufacturer">Tengo especificaciones del fabricante</option>
-<option value="experiment" selected>Quiero experimentar / hacer una estimación</option>
-</select></div>
-<div><label>¿Qué cambia?</label><p id="modeSummary" class="hint">Usa valores de ejemplo y cambia una variable a la vez para aprender su efecto.</p></div>
+<div data-step="2" class="studio-dashboard">
+<div class="studio-viz"><h3>Cámara frigorífica · Geometría</h3><svg class="iso-svg" viewBox="0 0 420 250" role="img" aria-label="Esquema isométrico de la cámara con largo, ancho y altura según las medidas capturadas"><ellipse class="iso-floor" id="isoFloor" cx="210" cy="215" rx="150" ry="22"/><g id="isoShapes"></g><text id="studioDimL" x="110" y="238" text-anchor="middle">Largo</text><text id="studioDimW" x="320" y="238" text-anchor="middle">Ancho</text><text id="studioDimH" x="20" y="120">Altura</text></svg><p class="studio-mini" id="studioVolume">Volumen: —</p></div>
+<div class="studio-viz"><h3>Temperaturas de diseño · Comparación</h3><svg class="temp-svg" viewBox="0 0 420 210" role="img" aria-label="Comparación de temperaturas interior y exterior"><rect class="temp-track" x="32" y="70" width="356" height="24" rx="12"/><rect class="temp-bar" x="32" y="70" width="170" height="24" rx="12" id="studioTempBar"/><circle class="temp-dot" id="studioTempDot" cx="202" cy="82" r="14"/><text x="30" y="40" id="studioTiText">Interior — °C</text><text x="225" y="40" id="studioToText">Exterior — °C</text><text x="30" y="140" id="studioDeltaText">ΔT — °C</text><text x="30" y="175" id="studioSeasonText">Temporada: —</text></svg><p class="studio-mini">La temporada documenta el escenario; no inventa ajustes meteorológicos automáticos.</p></div>
 </div>
-<div id="manufacturerHelp" class="good" hidden><b>Modo fabricante:</b> introduce los valores U de la ficha técnica de paredes, techo y piso, y los datos reales del proceso. Si la ficha da conductividad térmica (λ) en vez de U, no son el mismo valor: convierte con el espesor y las capas o utiliza el valor U certificado del conjunto. La capacidad del compresor debe verificarse por separado con las condiciones de operación y tablas del fabricante.</div>
-<div id="experimentHelp" class="note"><b>Modo experimental:</b> puedes elegir materiales predefinidos con coeficientes U aproximados. Son para aprender, no para certificar el diseño.</div>
-</section>
-<div class="note"><b>Importante:</b> es una herramienta de aprendizaje con simplificaciones. No sustituye un cálculo de diseño: puentes térmicos, infiltración real, humedad, deshielo, embalaje, respiración del producto y condiciones del refrigerante pueden cambiar el resultado.</div>
-
-<section class="panel">
+<section data-step="2" class="panel">
 <h2>1. Cámara y temperaturas</h2>
 <div class="grid">
 <div><label for="L">Largo (m)</label><input id="L" type="number" min="0" step=".1" value="10"></div>
@@ -104,8 +115,7 @@ input,select,textarea{display:block;width:100%;max-width:100%;min-width:0;min-he
 </div>
 <p class="hint">El exterior debe representar la condición de diseño más exigente, no necesariamente la temperatura que marca el clima en este momento.</p>
 </section>
-
-<section class="panel">
+<section data-step="3" class="panel">
 <h2>2. Transmisión por paredes, techo y piso</h2>
 <p>U es el coeficiente de transferencia térmica: cuanto mayor sea U, más calor atraviesa cada metro cuadrado por cada grado de diferencia. Si no conoces U, deja el ejemplo solo para practicar.</p>
 <div class="grid">
@@ -158,57 +168,7 @@ input,select,textarea{display:block;width:100%;max-width:100%;min-width:0;min-he
 <p class="hint">R = 1/U solo representa la resistencia térmica equivalente asociada al U ingresado; no determina la resistencia de cada capa por separado. Los valores U preseleccionados son referencias aproximadas, no datos certificados del material.</p>
 </div>
 </section>
-
-<section class="panel">
-<h2>3. Producto que entra a la cámara</h2>
-<div class="grid">
-<div><label for="mass">Producto que entra (kg por día)</label><input id="mass" type="number" min="0" step="1" value="5000"></div>
-<div><label for="Tp">Temperatura de entrada del producto (°C)</label><input id="Tp" type="number" step=".1" value="20"></div>
-<div><label for="cp">Calor específico del producto (kJ/kg·K)</label><input id="cp" type="number" min="0" step=".01" value="3.8"></div>
-<div><label for="hours">Horas disponibles para enfriarlo</label><input id="hours" type="number" min=".1" step=".5" value="18"></div>
-</div>
-<p class="hint">El cálculo sensible supone que el producto solo se enfría, sin congelarse: energía = masa × calor específico × diferencia de temperatura. Si el producto entra más frío que la cámara, esta parte se toma como cero.</p>
-</section>
-
-<section class="panel">
-<h2>4. Aire que entra al abrir puertas (estimación simple)</h2>
-<div class="grid">
-<div><label for="ach">Renovaciones de aire por hora</label><input id="ach" type="number" min="0" step=".1" value="2"></div>
-<div><label for="airhours">Horas equivalentes de infiltración al día</label><input id="airhours" type="number" min="0" step=".1" value="4"></div>
-</div>
-<p class="hint">Modelo sensible simplificado: volumen × renovaciones/h × horas × densidad del aire × calor específico × diferencia de temperatura. No calcula carga latente por humedad; el resultado puede subestimar la infiltración real.</p>
-</section>
-
-<section class="panel">
-<h2>5. Equipos y actividad dentro de la cámara</h2>
-<div class="grid">
-<div><label for="motors">Motores/ventiladores dentro (kW eléctricos)</label><input id="motors" type="number" min="0" step=".1" value="1.5"></div>
-<div><label for="lights">Iluminación (kW)</label><input id="lights" type="number" min="0" step=".1" value=".2"></div>
-<div><label for="people">Personas (cantidad)</label><input id="people" type="number" min="0" step="1" value="1"></div>
-<div><label for="personW">Calor por persona (W/persona)</label><input id="personW" type="number" min="0" step="10" value="300"></div>
-<div><label for="other">Otras cargas térmicas (kW)</label><input id="other" type="number" min="0" step=".1" value="0"></div>
-</div>
-<p class="hint">La potencia eléctrica disipada dentro de la cámara acaba convirtiéndose mayormente en calor. Para motores fuera de la cámara, no sumes automáticamente toda su potencia.</p>
-</section>
-
-<section class="panel">
-<button onclick="calculate()">Calcular y explicar</button>
-<div class="examplebuttons">
-<button class="secondary" onclick="loadExample('conservacion')">Ejemplo: conservación</button>
-<button class="secondary" onclick="loadExample('producto')">Ejemplo: mucho producto</button>
-<button class="secondary" onclick="loadExample('aislamiento')">Ejemplo: mejor aislamiento</button>
-</div>
-<div id="out" aria-live="polite" style="margin-top:16px"></div>
-</section>
-
-<section class="panel">
-<h2>Cómo aprender a usarla</h2>
-<details open><summary>¿Qué significa BTU/h?</summary><p>BTU/h es una tasa de transferencia de calor: cuánta energía térmica se extrae cada hora. <b>1 kW ≈ 3,412 BTU/h</b> y <b>1 tonelada de refrigeración ≈ 12,000 BTU/h ≈ 3.517 kW</b>.</p></details>
-<details><summary>¿Qué variables suelen cambiar más el resultado?</summary><p>Normalmente, la cantidad y temperatura del producto, la diferencia entre exterior e interior, el aislamiento (U), la apertura de puertas y el tiempo disponible para enfriar. Cambia una sola entrada cada vez y observa cómo cambia la carga.</p></details>
-<details><summary>¿Por qué no se elige el compresor solo con BTU/h?</summary><p>La capacidad real del compresor depende de la temperatura de evaporación, temperatura de condensación, refrigerante, sobrecalentamiento/subenfriamiento y condiciones del fabricante. El resultado de esta página es una estimación de carga, no una selección directa del compresor.</p></details>
-</section>
-
-<section class="panel" id="reglaBlock">
+<section data-step="3" class="panel" id="reglaBlock">
 <h2>Regla didáctica: transferencia de calor a través de una pared de block</h2>
 <p>Para una estimación de conducción en estado estable a través de una pared plana:</p>
 <p><code>Q = A × ΔT / Rtotal</code> &nbsp; y &nbsp; <code>U = 1 / Rtotal</code></p>
@@ -231,7 +191,52 @@ input,select,textarea{display:block;width:100%;max-width:100%;min-width:0;min-he
 <p class="hint">Al pulsar el botón, se copia la U calculada al campo de paredes de la calculadora principal. Esto no certifica el muro ni incorpora automáticamente puentes térmicos.</p>
 <p>Fuentes técnicas: <a href="https://handbook.ashrae.org/Handbooks/F25/SI/f25_Ch25/f25_Ch25_si.aspx" target="_blank" rel="noopener">ASHRAE Handbook, capítulo 25: resistencia térmica y factor U</a>; <a href="https://www.iso.org/standard/65708.html" target="_blank" rel="noopener">ISO 6946:2017, método de cálculo de resistencia y transmitancia térmica</a>.</p>
 </section>
-
+<section data-step="4" class="panel">
+<h2>3. Producto que entra a la cámara</h2>
+<div class="grid">
+<div><label for="mass">Producto que entra (kg por día)</label><input id="mass" type="number" min="0" step="1" value="5000"></div>
+<div><label for="Tp">Temperatura de entrada del producto (°C)</label><input id="Tp" type="number" step=".1" value="20"></div>
+<div><label for="cp">Calor específico del producto (kJ/kg·K)</label><input id="cp" type="number" min="0" step=".01" value="3.8"></div>
+<div><label for="hours">Horas disponibles para enfriarlo</label><input id="hours" type="number" min=".1" step=".5" value="18"></div>
+</div>
+<p class="hint">El cálculo sensible supone que el producto solo se enfría, sin congelarse: energía = masa × calor específico × diferencia de temperatura. Si el producto entra más frío que la cámara, esta parte se toma como cero.</p>
+</section>
+<section data-step="4" class="panel">
+<h2>4. Aire que entra al abrir puertas (estimación simple)</h2>
+<div class="grid">
+<div><label for="ach">Renovaciones de aire por hora</label><input id="ach" type="number" min="0" step=".1" value="2"></div>
+<div><label for="airhours">Horas equivalentes de infiltración al día</label><input id="airhours" type="number" min="0" step=".1" value="4"></div>
+</div>
+<p class="hint">Modelo sensible simplificado: volumen × renovaciones/h × horas × densidad del aire × calor específico × diferencia de temperatura. No calcula carga latente por humedad; el resultado puede subestimar la infiltración real.</p>
+</section>
+<section data-step="4" class="panel">
+<h2>5. Equipos y actividad dentro de la cámara</h2>
+<div class="grid">
+<div><label for="motors">Motores/ventiladores dentro (kW eléctricos)</label><input id="motors" type="number" min="0" step=".1" value="1.5"></div>
+<div><label for="lights">Iluminación (kW)</label><input id="lights" type="number" min="0" step=".1" value=".2"></div>
+<div><label for="people">Personas (cantidad)</label><input id="people" type="number" min="0" step="1" value="1"></div>
+<div><label for="personW">Calor por persona (W/persona)</label><input id="personW" type="number" min="0" step="10" value="300"></div>
+<div><label for="other">Otras cargas térmicas (kW)</label><input id="other" type="number" min="0" step=".1" value="0"></div>
+</div>
+<p class="hint">La potencia eléctrica disipada dentro de la cámara acaba convirtiéndose mayormente en calor. Para motores fuera de la cámara, no sumes automáticamente toda su potencia.</p>
+</section>
+<section data-step="5" class="panel">
+<button onclick="calculate()">Calcular y explicar</button>
+<div class="examplebuttons">
+<button class="secondary" onclick="loadExample('conservacion')">Ejemplo: conservación</button>
+<button class="secondary" onclick="loadExample('producto')">Ejemplo: mucho producto</button>
+<button class="secondary" onclick="loadExample('aislamiento')">Ejemplo: mejor aislamiento</button>
+</div>
+<div id="out" aria-live="polite" style="margin-top:16px"></div>
+</section>
+<section data-step="5" class="panel">
+<h2>Cómo aprender a usarla</h2>
+<details open><summary>¿Qué significa BTU/h?</summary><p>BTU/h es una tasa de transferencia de calor: cuánta energía térmica se extrae cada hora. <b>1 kW ≈ 3,412 BTU/h</b> y <b>1 tonelada de refrigeración ≈ 12,000 BTU/h ≈ 3.517 kW</b>.</p></details>
+<details><summary>¿Qué variables suelen cambiar más el resultado?</summary><p>Normalmente, la cantidad y temperatura del producto, la diferencia entre exterior e interior, el aislamiento (U), la apertura de puertas y el tiempo disponible para enfriar. Cambia una sola entrada cada vez y observa cómo cambia la carga.</p></details>
+<details><summary>¿Por qué no se elige el compresor solo con BTU/h?</summary><p>La capacidad real del compresor depende de la temperatura de evaporación, temperatura de condensación, refrigerante, sobrecalentamiento/subenfriamiento y condiciones del fabricante. El resultado de esta página es una estimación de carga, no una selección directa del compresor.</p></details>
+</section>
+<nav class="step-pager" id="stepPager" aria-label="Cambiar de paso"></nav>
+</main>
 <script>
 const n=id=>Number(document.getElementById(id).value)||0;
 const materialU={
@@ -419,5 +424,6 @@ updateList();refresh();
 if('serviceWorker'in navigator && location.protocol.startsWith('http'))navigator.serviceWorker.register('./sw.js').catch(()=>{});
 })();
 </script>
-<script defer src="./feedback.js?v=2"></script>
+<script defer src="./feedback.js?v=3"></script>
+<script defer src="./theme.js?v=1"></script>
 </body></html>

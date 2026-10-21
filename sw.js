@@ -1,9 +1,9 @@
 // BTU Studio service worker: network-first (fresh code when online), cache fallback (offline).
 // Bump CACHE whenever a precached file changes; old caches are deleted on activate.
-const CACHE = 'btu-v8-p0';
+const CACHE = 'btu-v9-redesign';
 const FILES = [
   './', './index.html', './manifest.webmanifest',
-  './feedback.js?v=2', './feedback.css?v=2',
+  './feedback.js?v=3', './feedback.css?v=3', './theme.js?v=1', './theme.css?v=1',
   './icon.svg', './icon-192.png', './icon-512.png', './apple-touch-icon.png'
 ];
 self.addEventListener('install', e => {

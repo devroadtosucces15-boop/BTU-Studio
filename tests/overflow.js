@@ -16,7 +16,7 @@ const widths = [320, 375, 390, 430, 768, 1280];
       console.log(ok ? '✓' : '✗', w + 'px', label, 'scrollWidth=' + r.sw, r.offenders.length ? 'offenders: ' + r.offenders.join(', ') : '');
     };
     await measure('app');
-    await page.click('#btu-feedback-launch'); await page.click('text=Mis reportes'); await measure('feedback list');
+    await page.click('#appReports'); await page.click('text=Mis reportes'); await measure('feedback list');
     await page.keyboard.press('Escape'); await ctx.close();
   }
   await b.close(); process.exitCode = bad ? 1 : 0;
