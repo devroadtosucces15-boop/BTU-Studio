@@ -3,7 +3,7 @@
   "private": true,
   "description": "Test tooling only; the app itself is static files with no build step.",
   "scripts": {
-    "test": "node tests/golden.js && node tests/reference.js && node tests/feedback.js && node tests/sw.js && node tests/overflow.js",
+    "test": "node tests/golden.js && node tests/reference.js && node tests/feedback.js && node tests/climate.js && node tests/sw.js && node tests/overflow.js",
     "golden:update": "node tests/golden.js --update"
   },
   "devDependencies": { "playwright": "^1.56.1" }
