@@ -1,0 +1,28 @@
+/* BTU Studio — feedback annotation overlay */
+#btu-feedback-launch{position:fixed;right:calc(16px + env(safe-area-inset-right));bottom:calc(18px + env(safe-area-inset-bottom));z-index:9000;border-radius:999px;background:#e3d7b5;color:#242321;border:1px solid #a99b76;padding:12px 17px;box-shadow:0 5px 24px #0006;font-size:14px;font-weight:750}
+#btu-feedback-launch:hover{background:#f1e5c5}
+#btu-feedback-mask{position:fixed;inset:0;z-index:9001;pointer-events:none;display:none}
+#btu-feedback-mask.active{display:block}
+#btu-feedback-layer{position:fixed;inset:0;z-index:9002;touch-action:none;cursor:crosshair;background:#1112;pointer-events:auto}
+#btu-feedback-layer svg{display:block;width:100%;height:100%}
+#btu-feedback-bar{position:fixed;top:calc(12px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:9004;display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:center;width:min(calc(100vw - 20px),650px);padding:10px;border-radius:13px;background:#242426;border:1px solid #53514a;box-shadow:0 10px 35px #0009}
+#btu-feedback-bar button{font-size:13px;padding:9px 12px;min-height:38px;background:#3a3a3b;color:#f2eee5;border-radius:8px}
+#btu-feedback-bar button[aria-pressed="true"]{background:#e3d7b5;color:#242321}
+#btu-feedback-bar button:last-child{background:#654343}
+#btu-feedback-panel{position:fixed;z-index:9005;bottom:calc(12px + env(safe-area-inset-bottom));right:12px;left:12px;max-height:min(78dvh,680px);overflow-y:auto;width:min(560px,calc(100vw - 24px));margin:0 auto;background:#29292a;color:#f5f3ee;border:1px solid #575550;border-radius:15px;padding:clamp(15px,3vw,24px);box-shadow:0 15px 45px #000b}
+#btu-feedback-panel h2{font-size:20px;margin:0 0 10px}
+#btu-feedback-panel p{font-size:13px;color:#d2cfc8}
+#btu-feedback-panel label{display:block;font-weight:650;margin:10px 0 5px}
+#btu-feedback-panel input,#btu-feedback-panel textarea,#btu-feedback-panel select{width:100%;min-width:0;max-width:100%;background:#363637;border:1px solid #5c5a55;color:#f4f1eb;border-radius:8px;font-size:16px}
+#btu-feedback-panel textarea{min-height:88px;resize:vertical}
+#btu-feedback-panel .btu-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+#btu-feedback-panel .btu-actions button,#btu-feedback-panel .btu-actions a{flex:1 1 120px;display:inline-flex;align-items:center;justify-content:center;padding:10px 12px;border-radius:8px;border:0;text-align:center;text-decoration:none;background:#484746;color:#fff;font-size:14px;font-weight:700}
+#btu-feedback-panel .btu-actions .btu-primary{background:#e3d7b5;color:#242321}
+#btu-feedback-panel .btu-report{padding:12px;margin:9px 0;background:#353536;border-radius:10px;border:0;overflow-wrap:anywhere}
+#btu-feedback-panel .btu-report p{margin:5px 0}
+#btu-feedback-panel .btu-report button{font-size:12px;margin-right:6px;margin-top:6px;min-height:32px}
+#btu-feedback-panel .btu-muted{color:#c2beb4;font-size:12px}
+#btu-feedback-panel .btu-actions a{min-height:42px}
+@media(max-width:520px){#btu-feedback-bar{top:auto;bottom:calc(12px + env(safe-area-inset-bottom));}#btu-feedback-panel{top:calc(10px + env(safe-area-inset-top));bottom:auto;max-height:calc(100dvh - 95px)}#btu-feedback-launch{font-size:13px;padding:11px 13px}}
+@media(prefers-reduced-motion:reduce){#btu-feedback-panel,#btu-feedback-bar{transition:none}}
+@media print{#btu-feedback-launch,#btu-feedback-mask,#btu-feedback-panel{display:none!important}}
