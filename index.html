@@ -26,7 +26,7 @@ input,select,textarea{display:block;width:100%;max-width:100%;min-width:0;min-he
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}@media print{body{background:white;color:black}.studio-nav,.studio-toolbar,.studio-progress,.studio-actions{display:none}.panel,.studio-viz,.metric{background:white;color:black;border:1px solid #ccc}}
 .studio-intro{padding:18px 0 9px}.studio-intro h1{margin:0 0 8px}.studio-intro .sub{font-size:1rem;max-width:65ch}.studio-intro h1::before{display:none}.studio-head{margin:10px 0 18px}.studio-nav-wrap{margin:16px 0}.studio-nav-wrap>label,.studio-nav-wrap>select{display:none}.studio-nav{grid-template-columns:repeat(4,minmax(0,1fr));margin:0}.studio-nav button{font-size:.78rem;line-height:1.4}.studio-progress{margin:14px 0}.studio-viz svg{max-height:200px}
 @media(max-width:800px){.studio-nav{display:none}.studio-nav-wrap>label{display:block}.studio-nav-wrap>select{display:block}.studio-nav-wrap{padding:13px;background:var(--surface);border-radius:13px}.studio-intro{padding:15px 0 6px}.studio-intro h1{font-size:clamp(1.9rem,6vw,2.8rem)}}
-</style><link rel="stylesheet" href="./feedback.css?v=3"><link rel="stylesheet" href="./theme.css?v=1">
+</style><link rel="stylesheet" href="./feedback.css?v=3"><link rel="stylesheet" href="./theme.css?v=3">
 </head>
 <body>
 <a class="studio-screen-reader" href="#mode">Saltar a la calculadora</a>
@@ -190,6 +190,34 @@ input,select,textarea{display:block;width:100%;max-width:100%;min-width:0;min-he
 <p><button type="button" class="secondary" onclick="useBlockU()">Usar U calculada como valor manual de paredes</button></p>
 <p class="hint">Al pulsar el botón, se copia la U calculada al campo de paredes de la calculadora principal. Esto no certifica el muro ni incorpora automáticamente puentes térmicos.</p>
 <p>Fuentes técnicas: <a href="https://handbook.ashrae.org/Handbooks/F25/SI/f25_Ch25/f25_Ch25_si.aspx" target="_blank" rel="noopener">ASHRAE Handbook, capítulo 25: resistencia térmica y factor U</a>; <a href="https://www.iso.org/standard/65708.html" target="_blank" rel="noopener">ISO 6946:2017, método de cálculo de resistencia y transmitancia térmica</a>.</p>
+</section>
+<section data-step="3" class="panel" id="materialsPanel"><h2>Biblioteca de materiales y capas</h2>
+<p class="hint">Combina capas para estimar U = 1 / (Σ espesor÷λ + resistencias superficiales). Los λ son valores representativos de rango medio, editables; sirven para aprender y comparar, no sustituyen la ficha técnica del fabricante.</p>
+<div class="grid">
+<div><label for="matSelect">Material</label><select id="matSelect"></select></div>
+<div><label for="matThick">Espesor (mm)</label><input id="matThick" type="number" min="1" step="1" value="100"></div>
+<div><label for="matLambda">Conductividad λ (W/m·K)</label><input id="matLambda" type="number" min="0.001" step="0.001"><small id="matRange" class="hint"></small></div>
+<div class="mat-add"><button type="button" id="matAdd" class="primary">Agregar capa</button></div>
+</div>
+<ul id="matLayers" class="mat-layers" aria-label="Capas de la construcción"></ul>
+<div class="grid">
+<div><label for="matRsi">Resistencia superficial interior Rsi (m²·K/W)</label><input id="matRsi" type="number" min="0" step=".01" value="0.13"></div>
+<div><label for="matRse">Resistencia superficial exterior Rse (m²·K/W)</label><input id="matRse" type="number" min="0" step=".01" value="0.04"></div>
+<div><label for="matSurface">Aplicar a</label><select id="matSurface"><option value="walls">Paredes</option><option value="roof">Techo</option><option value="floor">Piso</option></select></div>
+</div>
+<div class="metrics">
+<div class="metric"><span>Rtotal</span><div class="result" id="matRtotal">—</div></div>
+<div class="metric"><span>U resultante</span><div class="result" id="matU">—</div></div>
+<div class="metric"><span>Transferencia estimada</span><div class="result" id="matQ">—</div></div>
+</div>
+<p class="hint" id="matQnote"></p>
+<div class="examplebuttons"><button type="button" id="matUse" class="primary" disabled>Usar U</button><button type="button" id="matClear">Vaciar capas</button></div>
+<p id="matStatus" class="studio-mini" role="status" aria-live="polite"></p>
+<h3>Mismo espesor, distinto aislante</h3>
+<div class="grid"><div><label for="matCmpThick">Espesor a comparar (mm)</label><input id="matCmpThick" type="number" min="1" step="5" value="100"></div></div>
+<p class="hint">Una barra más corta significa menos calor por m² y por grado. Incluye las resistencias superficiales indicadas arriba.</p>
+<div id="matCompare" class="chartrows" aria-live="polite"></div>
+<p class="hint">Referencias generales: ISO 10456 (valores de diseño higrotérmicos), ISO 6946 y ASHRAE Handbook—Fundamentals, cap. 26. Los valores reales dependen de densidad, humedad, temperatura media y envejecimiento.</p>
 </section>
 <section data-step="4" class="panel">
 <h2>3. Producto que entra a la cámara</h2>
@@ -426,4 +454,5 @@ if('serviceWorker'in navigator && location.protocol.startsWith('http'))navigator
 </script>
 <script defer src="./feedback.js?v=3"></script>
 <script defer src="./theme.js?v=1"></script>
+<script defer src="./materials.js?v=1"></script>
 </body></html>
