@@ -76,3 +76,11 @@ code{background:var(--raised)}
 .step-pager button:only-child{flex-basis:100%}
 @media screen{.step-off{display:none!important}}
 @media print{.app-top,.app-drawer,.step-pager{display:none!important}}
+
+/* ── Biblioteca de materiales ─────────────── */
+.mat-add{display:flex;align-items:flex-end}.mat-add button{width:100%}
+.mat-layers{list-style:none;margin:14px 0;padding:0;display:grid;gap:6px}
+.mat-layers li{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:10px;align-items:center;padding:10px 12px;border-radius:12px;background:var(--raised);font-size:.88rem}
+.mat-layers li b{font-variant-numeric:tabular-nums;color:var(--accent)}.mat-layers li button{min-height:34px;width:34px;padding:0;background:var(--input)}
+.mat-layers .mat-empty{display:block;color:var(--muted);background:transparent;padding:4px 2px}
+#matPanel small{display:block}
